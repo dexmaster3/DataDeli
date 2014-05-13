@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder {
         $this->call('OfferTableSeeder');
         $this->command->info('offer table finished seeding');
 
+        $this->call('ImageTableSeeder');
+        $this->command->info('image table finished');
 	}
 
 }
@@ -119,5 +121,19 @@ class UserTableSeeder extends Seeder {
         {
             $user = User::create($user);
         }
+    }
+}
+
+class ImageTableSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('users')->delete();
+
+        $users = array(
+            array(
+                'imageUrl' => 'onlytesturl.com',
+                'offer_id' => Offer::find(2)->id
+            )
+        );
     }
 }

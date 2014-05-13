@@ -12,6 +12,6 @@ class Image extends Eloquent
 
     public function offer()
     {
-        return $this->belongsTo('Image');
+        return $this->belongsTo('Offer');
     }
 }
