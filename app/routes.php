@@ -11,7 +11,7 @@
 |
 */
 
-/* my test comment */
+/* my test comment longer */
 Route::get('/', function()
 {
     return View::make('pages.dashboard');

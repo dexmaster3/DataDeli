@@ -3,7 +3,8 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface
+{
 
 	/**
 	 * The database table used by the model.
@@ -40,37 +41,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	/**
-	 * Get the token value for the "remember me" session.
-	 *
-	 * @return string
-	 */
-	public function getRememberToken()
-	{
-		return $this->remember_token;
-	}
-
-	/**
-	 * Set the token value for the "remember me" session.
-	 *
-	 * @param  string  $value
-	 * @return void
-	 */
-	public function setRememberToken($value)
-	{
-		$this->remember_token = $value;
-	}
-
-	/**
-	 * Get the column name for the "remember me" token.
-	 *
-	 * @return string
-	 */
-	public function getRememberTokenName()
-	{
-		return 'remember_token';
-	}
-
-	/**
 	 * Get the e-mail address where password reminders are sent.
 	 *
 	 * @return string
@@ -79,5 +49,32 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
+
+    public function getAccessLevel()
+    {
+        return $this->accessLevel;
+    }
+
+    public function contact()
+    {
+        return $this->hasOne('Contact', 'user_id');
+    }
+
+    public function offers()
+    {
+        return $this->hasMany('Offer');
+    }
+
+    public function delete()
+    {
+        $this->contact()->delete();
+        // could be Contact::where('user_id', $this->id)->delete()
+
+        $this->offers()->delete();
+
+        return parent::delete();
+    }
+
+
 
 }
