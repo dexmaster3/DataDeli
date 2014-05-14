@@ -77,7 +77,13 @@ class ContactTableSeeder extends Seeder
                 'lastName' => 'Kelley',
                 'email' => User::find(4)->email,
                 'phone' => "(203)-555-5555",
-                'user_id' => User::find(4)->id)
+                'user_id' => User::find(4)->id),
+            array(
+                'firstName' => 'Justin',
+                'lastName' => 'Moss',
+                'email' => User::find(2)->email,
+                'phone' => '203-555-3456',
+                'user_id' => User::find(2)->id)
         );
 
         foreach ($contacts as $contact)
@@ -97,24 +103,27 @@ class UserTableSeeder extends Seeder {
                 'email' => "test@user.com",
                 "name" => "testUser1",
                 "password" => Hash::make("codename2"),
-                'accessLevel' => 4),
+                'role' => 4,
+                'parent_id' => 2),
 
             array(
                 'email' => "justin@webforwardmedia.com",
                 "name" => "Justin Moss",
                 "password" => Hash::make("codename1"),
-                "accessLevel" => 1),
+                "role" => 1),
 
             array(
                 'email' => "dexter@webforwardmedia.com",
                 "name" => "Dexter Caffery",
                 "password" => Hash::make("codename1"),
-                "accessLevel" => 1),
+                "role" => 1,
+                'parent_id' => 2),
             array(
                 'email' => "matt@webforwardmedia.com",
                 "name" => "Matt Kelley",
                 "password" => Hash::make("codename1"),
-                'accessLevel' => 2)
+                'role' => 2,
+                'parent_id' => 3)
         );
 
         foreach ($users as $user)
@@ -127,13 +136,18 @@ class UserTableSeeder extends Seeder {
 class ImageTableSeeder extends Seeder {
     public function run()
     {
-        DB::table('users')->delete();
+        DB::table('images')->delete();
 
-        $users = array(
+        $images = array(
             array(
                 'imageUrl' => 'onlytesturl.com',
                 'offer_id' => Offer::find(2)->id
             )
         );
+
+        foreach ($images as $image)
+        {
+            $image = Image::create($image);
+        }
     }
 }

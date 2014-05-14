@@ -20,11 +20,32 @@
         <th>User Contact First Name</th>
         <th>Actions!!!</th>
     </tr>
+    <?php echo $users ?>
 @foreach($users as $user)
     <tr>
         <td>{{ $user->name }}</td>
         <td>{{ $user->id }}</td>
         <td>{{ $user['updated_at'] }}</td>
+        @foreach($user->subUsers as $subuser)
+        <td style="background-color: indianred;">
+            {{ $subuser->name }}
+        </td>
+            @foreach($subuser->subUsers as $dubsub)
+            <td style="background-color: greenyellow">
+                {{ $dubsub->name }}
+            </td>
+            @endforeach
+        @endforeach
+        <?php $rag = $user ?>
+        <?php echo $rag ?>
+
+
+
+        @while($user->subUsers->count() > 0)
+        <span style="background-color: #00bfff;">dinguys dinguys<br>
+        {{ $user->subUsers }}</span>
+        <?php $user = $user->subUsers->first(); ?>
+        @endwhile
 
         @if ($user->contact != null)
             <td>{{ $user->contact->firstName }}</td>

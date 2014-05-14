@@ -11,11 +11,19 @@
 |
 */
 
-/* my test comment longer */
-Route::get('/', function()
-{
-    return View::make('pages.dashboard');
+Route::get('login', array('uses' => 'HomeController@showLogin'));
+
+Route::post('login', array('uses' => 'HomeController@doLogin'));
+
+Route::get('logout', array('uses' => "HomeController@doLogout"));
+
+Route::group(array('before' => 'auth'), function(){
+    Route::get('/', function()
+    {
+        return View::make('pages.dashboard');
+    });
 });
+
 Route::get('data', function()
 {
     return View::make('pages.data');
@@ -43,7 +51,9 @@ Route::get('offers', function()
 
 Route::resource('offers', 'OfferController');
 
-Route::resource('users', 'UserController');
+Route::group(array('before' => 'role'), function(){
+    Route::resource('users', 'UserController');
+});
 
 Route::post('upload', 'UploadController@upload');
 

@@ -19,8 +19,10 @@ class UserController extends BaseController {
         //
         $users = User::all();
 
+        $trees = userHelper::parseUsersTree($users, 0);
+
         return View::make('users.index')
-            ->with('users', $users);
+            ->with('users', $trees);
     }
 
     /**

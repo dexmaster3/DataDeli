@@ -50,9 +50,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 		return $this->email;
 	}
 
-    public function getAccessLevel()
+    public function subUsers()
     {
-        return $this->accessLevel;
+        return $this->hasMany('User', 'parent_id');//->where('parent_id', 0);
+    }
+
+    public function parentUser()
+    {
+        return User::find(parent_id);
+    }
+
+    public function role()
+    {
+        return $this->role;
     }
 
     public function contact()

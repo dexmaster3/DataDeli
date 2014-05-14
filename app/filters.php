@@ -22,6 +22,15 @@ App::after(function($request, $response)
 	//
 });
 
+
+Route::filter('role', function()
+{
+    if (Auth::user()->role != 1)
+    {
+        return Redirect::to('/');
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters
