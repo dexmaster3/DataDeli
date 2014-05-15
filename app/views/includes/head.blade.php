@@ -34,4 +34,5 @@
     <!-- GOOGLE FONT -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
 
+ {{ HTML::script('js/libs/jquery-2.0.2.min.js') }}
 

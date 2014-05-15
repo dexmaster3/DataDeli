@@ -11,44 +11,31 @@
     <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
 
-<a class="btn btn-success" href="{{ URL::to('users/create') }}">Create New User</a>
-<table style="border-spacing: 5px;">
+<a class="btn btn-success" href="{{ URL::to('users/create') }}">Create New SubUser</a>
+<table style="border-spacing: 5px;" id="userTable" class="table table-striped table-bordered table-hover dataTable">
+    <thead>
     <tr>
-        <th>User Name</th>
-        <th>User Id</th>
-        <th>User Updated</th>
-        <th>User Contact First Name</th>
+        <th>Username</th>
+        <th>Id #</th>
+        <th>Updated</th>
+        <th>Parent Account</th>
+        <th>User Contact Full Name</th>
         <th>Actions!!!</th>
     </tr>
-    <?php echo $users ?>
+    </thead>
+<tbody>
 @foreach($users as $user)
-    <tr>
+    <tr id="user{{$user->id}}">
         <td>{{ $user->name }}</td>
         <td>{{ $user->id }}</td>
         <td>{{ $user['updated_at'] }}</td>
-        @foreach($user->subUsers as $subuser)
-        <td style="background-color: indianred;">
-            {{ $subuser->name }}
+        <?php $parent = $user->parentUser() ?>
+        <td>
+            {{ $parent['email'] }}
         </td>
-            @foreach($subuser->subUsers as $dubsub)
-            <td style="background-color: greenyellow">
-                {{ $dubsub->name }}
-            </td>
-            @endforeach
-        @endforeach
-        <?php $rag = $user ?>
-        <?php echo $rag ?>
-
-
-
-        @while($user->subUsers->count() > 0)
-        <span style="background-color: #00bfff;">dinguys dinguys<br>
-        {{ $user->subUsers }}</span>
-        <?php $user = $user->subUsers->first(); ?>
-        @endwhile
 
         @if ($user->contact != null)
-            <td>{{ $user->contact->firstName }}</td>
+            <td>{{ $user->contact->firstName }} {{ $user->contact->lastName }}</td>
         @else
             <td> </td>
         @endif
@@ -63,5 +50,14 @@
         </td>
     </tr>
 @endforeach
+    </tbody>
 </table>
+
+<script>
+    $(document).ready(function() {
+        $('#userTable').dataTable({
+            "sPaginationType" : "bootstrap_full"
+        });
+    });
+</script>
 @stop

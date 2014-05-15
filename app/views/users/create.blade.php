@@ -6,7 +6,7 @@
 {{ Form::open(array('url' => 'users')) }}
 
 <div class="form-group">
-{{ Form::label('name', "Username") }}
+{{ Form::label('name', "Username (Just for display)") }}
 {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
 </div>
 

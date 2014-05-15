@@ -25,7 +25,7 @@ App::after(function($request, $response)
 
 Route::filter('role', function()
 {
-    if (Auth::user()->role != 1)
+    if (Auth::user()->role > 2)
     {
         return Redirect::to('/');
     }

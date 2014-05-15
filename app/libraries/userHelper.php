@@ -8,13 +8,20 @@
 
 class userHelper
 {
-    static function parseUsersTree($users, $count)
+    static function getAllChildrenIds($parent, &$previousChildren)
     {
-
-        foreach($users as $user)
+        if($parent->subUsers()->count() > 0)
         {
-            echo str_repeat("-", $count) . $user->email . '<br/>';
-            self::parseUsersTree($user->sub_users, $user->sub_users->count());
+            $children = $parent->sub_users;
+            foreach($children as $child)
+            {
+                array_push($previousChildren, $child->id);
+                //var_dump($previousChildren);
+                if($child->sub_users->count() > 0){
+                self::getAllChildrenIds($child, $previousChildren);
+                }
+            }
         }
+            return $previousChildren;
     }
 }

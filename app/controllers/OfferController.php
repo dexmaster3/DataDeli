@@ -17,7 +17,7 @@ class OfferController extends BaseController
     public function index()
     {
         //
-        $offers = User::find(3)->offers;
+        $offers = Auth::user()->offers;
 
         return View::make('offers.index')
             ->with('offers', $offers);

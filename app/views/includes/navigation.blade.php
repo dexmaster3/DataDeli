@@ -7,7 +7,7 @@
 					<a href="javascript:void(0);" id="show-shortcut">
                         <img src="img/avatars/sunny.png" alt="me" class="online" />
 						<span>
-							Justin Moss
+							{{ Auth::user()->name }}
 						</span>
                         <i class="fa fa-angle-down"></i>
                     </a>
@@ -48,7 +48,7 @@
     <a href="./headers"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Header</span></a>
 </li>
 <li>
-    <a href="./footer"><i class="fa fa-lg fa-fw fa-folder-open"></i> <span class="menu-item-parent">Footer</span></a>
+    <a href="./users"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Users</span></a>
 </li>
 </ul>
 </nav>

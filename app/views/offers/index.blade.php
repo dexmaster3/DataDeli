@@ -11,7 +11,7 @@ table, th, td{
     <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
 
-<a class="btn btn-success" href="{{ URL::to('offers/create') }}">Create New User</a>
+<a class="btn btn-success" href="{{ URL::to('offers/create') }}">Create New Offering</a>
 <table style="border-spacing: 5px;">
     <tr>
         <th>Offer Name</th>

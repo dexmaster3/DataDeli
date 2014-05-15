@@ -34,8 +34,8 @@
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
     <?php echo HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js'); ?>
 <script>
-    if (!window.jQuery) {
-        document.write('<?php echo HTML::script('js/libs/jquery-2.0.2.min.js'); ?>);
+    if (!window.jQuery.ui) {
+        document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
     }
 </script>
 
@@ -940,6 +940,14 @@ $(document).ready(function() {
 })
 
 </script>
+{{ HTML::script('js/plugin/datatables/jquery.dataTables-cust.js') }}
+{{ HTML::script('js/plugin/datatables/ColReorder.min.js') }}
+{{ HTML::script('js/plugin/datatables/FixedColumns.min.js') }}
+{{ HTML::script('js/plugin/datatables/ColVis.min.js') }}
+{{ HTML::script('js/plugin/datatables/ZeroClipboard.js') }}
+{{ HTML::script('js/plugin/datatables/media/js/TableTools.min.js') }}
+{{ HTML::script('js/plugin/datatables/DT_bootstrap.js') }}
+
 
 <!-- Your GOOGLE ANALYTICS CODE Below -->
 <script type="text/javascript">
@@ -957,5 +965,3 @@ $(document).ready(function() {
     })();
 
 </script>
-
-

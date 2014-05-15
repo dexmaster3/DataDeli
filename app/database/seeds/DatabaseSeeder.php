@@ -83,7 +83,43 @@ class ContactTableSeeder extends Seeder
                 'lastName' => 'Moss',
                 'email' => User::find(2)->email,
                 'phone' => '203-555-3456',
-                'user_id' => User::find(2)->id)
+                'user_id' => User::find(2)->id),
+            array(
+                'firstName' => 'Chip',
+                'lastName' => 'Dipkus',
+                'email' => User::find(5)->email,
+                'phone' => '2064945849',
+                'user_id' => User::find(5)->id),
+            array(
+                'firstName' => 'Jimes',
+                'lastName' => 'Tooper',
+                'email' => User::find(6)->email,
+                'phone' => '303745849',
+                'user_id' => User::find(6)->id),
+            array(
+                'firstName' => 'Donna',
+                'lastName' => 'Gust',
+                'email' => User::find(7)->email,
+                'phone' => '594945849',
+                'user_id' => User::find(7)->id),
+            array(
+                'firstName' => 'Will',
+                'lastName' => 'Grello',
+                'email' => User::find(8)->email,
+                'phone' => '2064945849',
+                'user_id' => User::find(8)->id),
+            array(
+                'firstName' => 'Grum',
+                'lastName' => 'Green',
+                'email' => User::find(9)->email,
+                'phone' => '46745849',
+                'user_id' => User::find(9)->id),
+            array(
+                'firstName' => 'Steve',
+                'lastName' => 'McHanahan',
+                'email' => User::find(10)->email,
+                'phone' => '2064945849',
+                'user_id' => User::find(10)->id)
         );
 
         foreach ($contacts as $contact)
@@ -105,13 +141,11 @@ class UserTableSeeder extends Seeder {
                 "password" => Hash::make("codename2"),
                 'role' => 4,
                 'parent_id' => 2),
-
             array(
                 'email' => "justin@webforwardmedia.com",
                 "name" => "Justin Moss",
                 "password" => Hash::make("codename1"),
                 "role" => 1),
-
             array(
                 'email' => "dexter@webforwardmedia.com",
                 "name" => "Dexter Caffery",
@@ -123,7 +157,43 @@ class UserTableSeeder extends Seeder {
                 "name" => "Matt Kelley",
                 "password" => Hash::make("codename1"),
                 'role' => 2,
-                'parent_id' => 3)
+                'parent_id' => 3),
+            array(
+                'email' => 'chipdip@yahoo.com',
+                'name' => 'Chip Dipkus',
+                'password' => Hash::make('codename1'),
+                'role' => 1,
+                'parent_id' => 4),
+            array(
+                'email' => 'drjimes@yahoo.com',
+                'name' => 'Doctor Jimes Tooper',
+                'password' => Hash::make('codename1'),
+                'role' => 4,
+                'parent_id' => 4),
+            array(
+                'email' => 'hdonna@gmail.com',
+                'name' => 'H Donna Gust',
+                'password' => Hash::make('codename1'),
+                'role' => 3,
+                'parent_id' => 2),
+            array(
+                'email' => 'willgrello@gmail.com',
+                'name' => 'Will Grello',
+                'password' => Hash::make('codename1'),
+                'role' => 3,
+                'parent_id' => 2),
+            array(
+                'email' => 'grum@gmail.com',
+                'name' => 'Grum',
+                'password' => Hash::make('codename1'),
+                'role' => 3,
+                'parent_id' => 2),
+            array(
+                'email' => 'smchanahan@gmail.com',
+                'name' => 'Steve McHanahan',
+                'password' => Hash::make('codename1'),
+                'role' => 3,
+                'parent_id' => 2)
         );
 
         foreach ($users as $user)

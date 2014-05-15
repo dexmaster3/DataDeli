@@ -57,7 +57,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
     public function parentUser()
     {
-        return User::find(parent_id);
+        return User::find($this->parent_id);
     }
 
     public function role()

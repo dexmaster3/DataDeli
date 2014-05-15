@@ -16,13 +16,13 @@ class UserController extends BaseController {
      */
     public function index()
     {
-        //
-        $users = User::all();
-
-        $trees = userHelper::parseUsersTree($users, 0);
+        //This array used as reference in the getAllChildrenIds function
+        $childUsers = array();
+        userHelper::getAllChildrenIds(Auth::user(), $childUsers);
+        $users = User::whereIn('id', $childUsers)->get();
 
         return View::make('users.index')
-            ->with('users', $trees);
+            ->with('users', $users);
     }
 
     /**
@@ -59,8 +59,9 @@ class UserController extends BaseController {
             $user = new User;
             $user->name = Input::get('name');
             $user->email = Input::get('email');
+            $user->parent_id = Auth::user()->id;
             $user->password = Hash::make(Input::get('password'));
-            $user->accessLevel = 5;
+            $user->role = 5;
             $user->save();
             $contact = new Contact;
             $contact->email = Input::get('email');
@@ -159,11 +160,15 @@ class UserController extends BaseController {
      */
     public function destroy($id)
     {
-        //
         $user = User::find($id);
+        $children = User::where('parent_id', '=', $id)->get();
+        foreach($children as $item){
+            $item->parent_id = Auth::user()->id;
+            $item->save();
+        }
         $user->delete();
 
-        Session::flash('message', 'User has been wiped');
+        Session::flash('message', 'User has been wiped (dependant accounts transferred to you)');
         return Redirect::to('users');
     }
 
