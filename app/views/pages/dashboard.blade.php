@@ -406,13 +406,13 @@
                         <div class="message-text">
                             <time>
                                 2014-01-13
-                            </time> <a href="javascript:void(0);" class="username">Sadi Orlaf</a> Hey did you meet the new board of director? He's a bit of an arse if you ask me...anyway here is the report you requested. I am off to launch with Lisa and Andrew, you wanna join?
+                            </time> <a href="javascript:void(0);" class="username">Sadi Orlaf</a> Hey did you meet the new board of director? He's fucked me in the ass...anyway here is the report you requested. I am off to launch with Lisa and Andrew, you wanna join?
                             <p class="chat-file row">
-                                <b class="pull-left col-sm-6"> <!--<i class="fa fa-spinner fa-spin"></i>--> <i class="fa fa-file"></i> report-2013-demographic-report-annual-earnings.xls </b>
+                                <b class="pull-left col-sm-6"> <!--<i class="fa fa-spinner fa-spin"></i>--> <i class="fa fa-file"></i> sadi-orlafs-black-book.xls </b>
                                 <span class="col-sm-6 pull-right"> <a href="javascript:void(0);" class="btn btn-xs btn-default">cancel</a> <a href="javascript:void(0);" class="btn btn-xs btn-success">save</a> </span>
                             </p>
                             <p class="chat-file row">
-                                <b class="pull-left col-sm-6"> <i class="fa fa-ok txt-color-green"></i> tobacco-report-2012.doc </b>
+                                <b class="pull-left col-sm-6"> <i class="fa fa-ok txt-color-green"></i> sadi-nudes01.jpeg </b>
                                 <span class="col-sm-6 pull-right"> <a href="javascript:void(0);" class="btn btn-xs btn-primary">open</a> </span>
                             </p> </div>
                     </li>
@@ -421,7 +421,7 @@
                         <div class="message-text">
                             <time>
                                 2014-01-13
-                            </time> <a href="javascript:void(0);" class="username">John Doe</a> Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i>
+                            </time> <a href="javascript:void(0);" class="username">John Doe</a> Haha! You're such a fucking faggot. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i>
                         </div>
                     </li>
                 </ul>

@@ -17,47 +17,44 @@ Route::post('login', array('uses' => 'HomeController@doLogin'));
 
 Route::get('logout', array('uses' => "HomeController@doLogout"));
 
-Route::group(array('before' => 'auth'), function(){
-    Route::get('/', function()
-    {
+Route::get('nonprotected', function()
+{
+return 'nonprotectiontest';
+});
+
+Route::group(array('before' => 'auth'), function () {
+    Route::get('/', function () {
         return View::make('pages.dashboard');
     });
-});
 
-Route::get('data', function()
-{
-    return View::make('pages.data');
-});
-Route::get('footer', function()
-{
-    return View::make('pages.footer');
-});
-Route::get('headers', function()
-{
-    return View::make('pages.headers');
-});
-Route::get('mailings', function()
-{
-    return View::make('pages.mailings');
-});
-Route::get('servers', function()
-{
-    return View::make('pages.servers');
-});
-Route::get('offers', function()
-{
-    return View::make('pages.offers');
-});
+    Route::get('data', function () {
+        return View::make('pages.data');
+    });
+    Route::get('footer', function () {
+        return View::make('pages.footer');
+    });
+    Route::get('headers', function () {
+        return View::make('pages.headers');
+    });
+    Route::get('mailings', function () {
+        return View::make('pages.mailings');
+    });
+    Route::get('servers', function () {
+        return View::make('pages.servers');
+    });
+    Route::get('offers', function () {
+        return View::make('pages.offers');
+    });
 
-Route::resource('offers', 'OfferController');
+    Route::resource('offers', 'OfferController');
 
-Route::group(array('before' => 'role'), function(){
-    Route::resource('users', 'UserController');
-});
+    Route::group(array('before' => 'role'), function () {
+        Route::resource('users', 'UserController');
+    });
 
-Route::post('upload', 'UploadController@upload');
+    Route::post('upload', 'UploadController@upload');
 
-Route::get('upload', function()
-{
-    return null;
+    Route::get('upload', function () {
+        return null;
+    });
 });

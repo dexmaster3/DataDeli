@@ -16,10 +16,15 @@ class UserController extends BaseController {
      */
     public function index()
     {
-        //This array used as reference in the getAllChildrenIds function
+        //This array used as reference in the getAllChildrenIds function -- needed to get 'subSubUsers'
+        $currentUser = Auth::user();
         $childUsers = array();
-        userHelper::getAllChildrenIds(Auth::user(), $childUsers);
-        $users = User::whereIn('id', $childUsers)->get();
+        userHelper::getAllChildrenIds($currentUser, $childUsers);
+        if ($childUsers != null){
+            $users = User::whereIn('id', $childUsers)->get();
+        } else {
+            $users = array();
+        }
 
         return View::make('users.index')
             ->with('users', $users);
@@ -85,6 +90,21 @@ class UserController extends BaseController {
     {
         //
         $user = User::find($id);
+
+        //We are temporarily adding gravatar/children/parsednumber to User, just to pass to this view
+        $user->gravatar = Hash::make($user->email);
+
+        $children = array();
+        foreach ($user->subUsers as $subs){
+            array_push($children, $subs);
+        }
+        if (isset($children)){
+            $user->children = $children;
+        }
+        if(  preg_match('~.*(\d{3})[^\d]*(\d{3})[^\d]*(\d{4}).*~', $user->contact->phone,  $matches ) )
+        {
+            $user->parsedNumber = $matches[1] . '-' .$matches[2] . '-' . $matches[3];
+        }
 
         return View::make('users.show')
             ->with('user', $user);

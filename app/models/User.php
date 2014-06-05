@@ -52,7 +52,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
     public function subUsers()
     {
-        return $this->hasMany('User', 'parent_id');//->where('parent_id', 0);
+        return $this->hasMany('User', 'parent_id', 'id');//->where('parent_id', 0);
     }
 
     public function parentUser()

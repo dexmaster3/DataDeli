@@ -24,6 +24,21 @@
     </tr>
     </thead>
 <tbody>
+<tr>
+    <td>{{Auth::user()->name}}</td>
+    <td>{{Auth::user()->id}}</td>
+    <td>{{Auth::user()->updated_at}}</td>
+    <td>{{Auth::user()->parentUser()}}</td>
+    @if (Auth::user()->contact != null)
+    <td>{{ Auth::user()->contact->firstName }} {{ Auth::user()->contact->lastName }}</td>
+    @else
+    <td> </td>
+    @endif
+    <td>
+        <a class="btn btn-small btn-success" href="{{ URL::to('users/' . Auth::user()->id) }}">Show this user</a>
+        <a class="btn btn-small btn-info" href="{{ URL::to('users/' . Auth::user()->id . '/edit') }}">Edit this user</a>
+    </td>
+</tr>
 @foreach($users as $user)
     <tr id="user{{$user->id}}">
         <td>{{ $user->name }}</td>
@@ -56,7 +71,8 @@
 <script>
     $(document).ready(function() {
         $('#userTable').dataTable({
-            "sPaginationType" : "bootstrap_full"
+            "sPaginationType" : "bootstrap_full",
+            "order" : [[4, "desc"]]
         });
     });
 </script>
