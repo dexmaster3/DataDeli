@@ -42,7 +42,7 @@ class HomeController extends BaseController {
             } else {
 
                 // validation not successful, send back to form
-                return Redirect::to('login');
+                return Redirect::to('login')->with('loginfailed', 'Incorrect Email/Password')->withInput(Input::except('password'));
 
             }
 

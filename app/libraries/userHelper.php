@@ -8,20 +8,21 @@
 
 class userHelper
 {
-    static function getAllChildrenIds($parent, &$previousChildren)
+    static function getAllChildrenIds($parent, &$previousChildren, $indent = 0)
     {
-        if($parent->subUsers()->count() > 0)
+        if($parent->subUsers->count() > 0)
         {
-            $children = $parent->sub_users;
+            $children = $parent->subUsers;
             foreach($children as $child)
             {
-                array_push($previousChildren, $child->id);
+                $child->indent = $indent;
+                array_push($previousChildren, $child);
                 //var_dump($previousChildren);
-                if($child->sub_users->count() > 0){
-                self::getAllChildrenIds($child, $previousChildren);
+                if($child->subUsers->count() > 0){
+                self::getAllChildrenIds($child, $previousChildren, $indent + 1);
                 }
             }
         }
-            return $previousChildren;
+        return $previousChildren;
     }
 }

@@ -99,8 +99,10 @@
                         </header>
 
                         <fieldset>
-
                             <section>
+                                <p class="bg-danger" style="text-align: center;font-size:20px;">
+                                    {{Session::get('loginfailed')}}
+                                </p>
                                 <label class="label">E-mail</label>
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
                                     {{ Form::text('email', Input::old('email'), array('placeholder' => 'email@domain.com')) }}

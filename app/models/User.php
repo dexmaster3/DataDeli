@@ -60,11 +60,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface
         return User::find($this->parent_id);
     }
 
-    public function role()
-    {
-        return $this->role;
-    }
-
     public function contact()
     {
         return $this->hasOne('Contact', 'user_id');
@@ -98,6 +93,5 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     {
         return 'remember_token';
     }
-
 
 }

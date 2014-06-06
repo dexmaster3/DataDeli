@@ -20,14 +20,7 @@ class UserController extends BaseController {
         $currentUser = Auth::user();
         $childUsers = array();
         userHelper::getAllChildrenIds($currentUser, $childUsers);
-        if ($childUsers != null){
-            $users = User::whereIn('id', $childUsers)->get();
-        } else {
-            $users = array();
-        }
-
-        return View::make('users.index')
-            ->with('users', $users);
+        return View::make('users.index')->with('childtree', $childUsers);
     }
 
     /**
