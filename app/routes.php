@@ -10,22 +10,26 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::get('login', array('uses' => 'HomeController@showLogin'));
-
-Route::post('login', array('uses' => 'HomeController@doLogin'));
-
-Route::get('logout', array('uses' => "HomeController@doLogout"));
-
-Route::get('nonprotected', function()
-{
-return 'nonprotectiontest';
+Route::get('/', function () {
+    return View::make('home.index');
+});
+Route::get('/work', function () {
+    return View::make('home.work');
+});
+Route::get('/contact', function () {
+    return View::make('home.contact');
 });
 
+
+Route::get('login', array('uses' => 'LoginController@showLogin'));
+
+Route::post('login', array('uses' => 'LoginController@doLogin'));
+
+Route::get('logout', array('uses' => "LoginController@doLogout"));
+
+
+
 Route::group(array('before' => 'auth'), function () {
-    Route::get('/', function () {
-        return View::make('pages.dashboard');
-    });
 
     Route::get('data', function () {
         return View::make('pages.data');
