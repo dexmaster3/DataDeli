@@ -5,7 +5,7 @@
     <div id="logo-group">
 
         <!-- PLACE YOUR LOGO HERE -->
-        <span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
+        <span id="logo"> <img src="/img/logo.png" alt="SmartAdmin"> </span>
         <!-- END LOGO PLACEHOLDER -->
 
         <!-- Note: The activity badge color changes when clicked and resets the number to 0
@@ -52,32 +52,6 @@
         <!-- END AJAX-DROPDOWN -->
     </div>
 
-    <!-- projects dropdown -->
-    <div id="project-context">
-
-        <span class="label">Projects:</span>
-        <span id="project-selector" class="popover-trigger-element dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
-
-        <!-- Suggestion: populate this list with fetch and push technique -->
-        <ul class="dropdown-menu">
-            <li>
-                <a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">Notes on pipeline upgradee</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">Assesment Report for merchant account</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
-            </li>
-        </ul>
-        <!-- end dropdown-menu-->
-
-    </div>
-    <!-- end projects dropdown -->
 
     <!-- pulled right: nav area -->
     <div class="pull-right">
@@ -99,35 +73,6 @@
             <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
         </div>
         <!-- end search mobile button -->
-
-        <!-- input: search field -->
-        <form action="#search.html" class="header-search pull-right">
-            <input type="text" placeholder="Find reports and more" id="search-fld">
-            <button type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-            <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
-        </form>
-        <!-- end input: search field -->
-
-        <!-- multiple lang dropdown : find all flags in the image folder -->
-        <ul class="header-dropdown-list hidden-xs">
-            <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img alt="" src="img/flags/us.png"> <span> US </span> <i class="fa fa-angle-down"></i> </a>
-                <ul class="dropdown-menu pull-right">
-                    <li class="active">
-                        <a href="javascript:void(0);"><img alt="" src="img/flags/us.png"> US</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img alt="" src="img/flags/es.png"> Spanish</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img alt="" src="img/flags/de.png"> German</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <!-- end multiple lang -->
 
     </div>
     <!-- end pulled right: nav area -->

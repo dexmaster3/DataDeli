@@ -21,6 +21,15 @@ class UserPost extends Eloquent
 
     public function commentPosts()
     {
-        return $this->hasMany('PostComment', 'parent_post_id', 'id');
+        return $this->hasMany('PostComment', 'parent_post_id', 'id')->orderBy('created_at', 'ASC');
+    }
+
+    public function friendlyCreatedAt()
+    {
+        if (strtotime($this->created_at) > strtotime("-30 days")) {
+            return \Carbon\Carbon::createFromTimestamp(strtotime($this->created_at))->diffForHumans();
+        } else {
+            return date("g:i a F j, Y", strtotime($this->created_at));
+        }
     }
 }

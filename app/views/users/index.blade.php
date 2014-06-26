@@ -1,11 +1,6 @@
 @extends('layouts.layout')
 @section('content')
 
-<style>
-    .deleteSubmit {
-        background-color: #bcc5cc;
-    }
-</style>
 @if (Session::has('message'))
 <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
@@ -32,12 +27,14 @@
                 @if($user->indent == 0)
                 <li class="parent_li" role="treeitem">
                     <span title="Collapse this branch"><i class="fa fa-lg fa-minus-circle"></i> {{$user->email}}
-                        <span style="transition:none;"><a href="{{ URL::to('users/' . $user->id) }}"> Profile </a></span>
-                        <span style="transition:none;"><a href="{{ URL::to('users/' . $user->id . '/edit') }}"> Edit </a></span>
-                        <span style="transition:none;">
+                        <span style="transition:none;"><a href="{{ URL::to('users/' . $user->id) }}"> <i class="fa fa-ls fa-fw fa-user"></i> </a></span>
+                        <span style="transition:none;"><a href="{{ URL::to('users/' . $user->id . '/edit') }}"> <i class="fa fa-ls fa-fw fa-pencil"></i> </a></span>
+                        <span style="transition:none;display:inline-flex;">
                             {{ Form::open(array('url' => 'users/' . $user->id, 'class' => 'pull-right')) }}
                             {{ Form::hidden('_method', 'DELETE') }}
-                            {{ Form::submit('Delete this User', array('class' => 'deleteSubmit')) }}
+                            <i class="fa fa-ls fa-fw fa-times linkColor">
+                            {{ Form::submit("dl", array('class' => 'deleteSubmit')) }}
+                            </i>
                             {{ Form::close() }}
                         </span>
                     </span>
@@ -51,10 +48,17 @@
 </section>
 <script>
     $(document).ready(function () {
+        //This section creates the subusers in tree view -> it needs to be on the view to get model data
         var childrenData = [<?php foreach($childtree as $item){ echo $item.','; }?>];
-
         childrenData.forEach(function (entry, index, array) {
-            $("#user" + entry.parent_id).append("<li class='parent_li' role='parent_li'><span title='Collapse this branch'><i class='fa fa-lg fa-minus-circle'></i> " + entry.email + "</span><ul role='group' id='user" + entry.id + "'></ul></li>")
+            $("#user" + entry.parent_id).append("<li class='parent_li' role='parent_li'><span title='Collapse this branch'><i class='fa fa-lg fa-minus-circle'></i> "
+                + entry.email + "<span style='transition:none;'><a href='users/" + entry.id + "'> <i class='fa fa-ls fa-fw fa-user'></i> </a></span>"+
+            "<span style='transition:none;'><a href='users/" + entry.id + "/edit'> <i class='fa fa-ls fa-fw fa-pencil'></i> </a></span>"+
+            "<span style='transition:none;display:inline-flex;'>"+
+                "<form method='post' action='/users/" + entry.id + "' accept-charset='UTF-8' class='pull-right'>"+
+                "<input name='_method' type='hidden' value='DELETE'><i class='fa fa-ls fa-fw fa-times linkColor'>"+
+                "<input class='deleteSubmit' type='submit' value='dl'></i></form>"+
+        "</span></span><ul role='group' id='user" + entry.id + "'></ul></li>")
         });
 
         $('.tree > ul').attr('role', 'tree').find('ul').attr('role', 'group');

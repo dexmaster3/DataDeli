@@ -8,7 +8,6 @@
 @include('includes.navigation')
 <!-- MAIN PANEL -->
 <div id="main" role="main">
-    @include('includes.ribbon')
     <div id="content">
         @yield('content')
     </div>    <!--END CONTENT-->

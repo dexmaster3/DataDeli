@@ -100,7 +100,7 @@ class UserController extends BaseController {
         }
 
         return View::make('users.show')
-            ->with('user', $user)->with('pageId', $id);
+            ->with('user', $user);
     }
 
     /**
@@ -185,15 +185,28 @@ class UserController extends BaseController {
         return Redirect::to('users');
     }
 
+
+    public function profile()
+    {
+        $user = Auth::user();
+        $user->gravatar = Hash::make($user->email);
+
+        $children = array();
+        foreach ($user->subUsers as $subs){
+            array_push($children, $subs);
+        }
+        if (isset($children)){
+            $user->children = $children;
+        }
+        if(  preg_match('~.*(\d{3})[^\d]*(\d{3})[^\d]*(\d{4}).*~', $user->contact->phone,  $matches ) )
+        {
+            $user->parsedNumber = $matches[1] . '-' .$matches[2] . '-' . $matches[3];
+        }
+
+        return View::make('users.show')->with('user', $user);
+    }
     public function userProfilePost()
     {
-        $rules = array(
-            'content' => 'required'
-        );
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()){
-            return Redirect::to('users/' . $id)->withErrors($validator)->withInput(Input::all());
-        } else {
             $user = Auth::user();
             $pageId = Input::get('pageId');
             $posting = new UserPost;
@@ -206,7 +219,6 @@ class UserController extends BaseController {
             $postedToUser->profilePosts()->save($posting);
 
             return Redirect::to('/users/' . $pageId);
-        }
     }
 
     public function userProfileComment()
@@ -219,6 +231,27 @@ class UserController extends BaseController {
         $comment->user_id = $user->id;
         $comment->parent_post_id = $parentPost->id;
         $parentPost->commentPosts()->save($comment);
+
+        return Redirect::to('/users/' . $parentPost->profile_user_id);
+    }
+
+    public function deletePosting()
+    {
+        $user = Auth::user();
+
+        if (Input::get('commentId') > 0) {
+            $comment = PostComment::find(Input::get('commentId'));
+            if ($comment->user->id == $user->id){
+                $comment->delete();
+            }
+        }
+        if (Input::get('postId') > 0) {
+            $post = UserPost::find(Input::get('postId'));
+            if ($post->user->id == $user->id){
+                $post->delete();
+            }
+        }
+        return Redirect::to('/users/' . Input::get('pageId'));
     }
 
 }

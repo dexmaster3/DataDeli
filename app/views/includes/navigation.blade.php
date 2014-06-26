@@ -5,7 +5,7 @@
 				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
 
 					<a href="javascript:void(0);" id="show-shortcut">
-                        <img src="img/avatars/sunny.png" alt="me" class="online" />
+                        <img src="http://www.gravatar.com/avatar/{{md5(strtolower(trim(Auth::user()->email)))}}" alt="me" class="online" />
 						<span>
 							{{ Auth::user()->name }}
 						</span>

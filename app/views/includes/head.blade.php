@@ -14,11 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Basic Styles -->
-    <?php echo HTML::style('css/bootstrap.min.css'); ?>
-    <?php echo HTML::style('css/font-awesome.min.css'); ?>
+    {{ HTML::style('css/loggedstyle.css') }}
+    {{ HTML::style('css/bootstrap.min.css') }}
+    {{ HTML::style('css/font-awesome.min.css') }}
     <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
-    <?php echo HTML::style('css/smartadmin-production.css'); ?>
-    <?php echo HTML::style('css/smartadmin-skins.css'); ?>
+    {{ HTML::style('css/smartadmin-production.css') }}
+    {{ HTML::style('css/smartadmin-skins.css') }}
 
     <!-- SmartAdmin RTL Support is under construction
          <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.css"> -->

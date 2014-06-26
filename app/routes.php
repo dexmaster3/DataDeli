@@ -31,32 +31,15 @@ Route::get('logout', array('uses' => "LoginController@doLogout"));
 
 Route::group(array('before' => 'auth'), function () {
 
-    Route::get('data', function () {
-        return View::make('pages.data');
-    });
-    Route::get('footer', function () {
-        return View::make('pages.footer');
-    });
-    Route::get('headers', function () {
-        return View::make('pages.headers');
-    });
-    Route::get('mailings', function () {
-        return View::make('pages.mailings');
-    });
-    Route::get('servers', function () {
-        return View::make('pages.servers');
-    });
-    Route::get('offers', function () {
-        return View::make('pages.offers');
-    });
-
     Route::resource('offers', 'OfferController');
 
-    Route::group(array('before' => 'role'), function () {
-        Route::resource('users', 'UserController');
-        Route::post('userProfilePost', 'UserController@userProfilePost');
-        Route::post('userProfileComment', 'UserController@userProfileComment');
+    Route::group(array('prefix' => 'users'), function () {
+        Route::get('profile', 'UserController@profile');
     });
+    Route::resource('users', 'UserController');
+    Route::post('userProfilePost', 'UserController@userProfilePost');
+    Route::post('userProfileComment', 'UserController@userProfileComment');
+    Route::delete('deletePosting', 'UserController@deletePosting');
 
     Route::post('upload', 'UploadController@upload');
 

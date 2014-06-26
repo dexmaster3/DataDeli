@@ -72,12 +72,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
     public function postings()
     {
-        return $this->hasMany('UserPost', 'user_id', 'id');
+        return $this->hasMany('UserPost', 'user_id', 'id')->orderBy('created_at', 'ASC');
     }
 
     public function profilePosts()
     {
-        return $this->hasMany('UserPost', 'profile_user_id', 'id');
+        return $this->hasMany('UserPost', 'profile_user_id', 'id')->orderBy('created_at', 'DESC');
+    }
+
+    public function friendlyCreatedAt()
+    {
+        if (strtotime($this->created_at) > strtotime("-30 days")) {
+            return \Carbon\Carbon::createFromTimestamp(strtotime($this->created_at))->diffForHumans();
+        } else {
+            return date("g:i a F j, Y", strtotime($this->created_at));
+        }
     }
     public function delete()
     {
