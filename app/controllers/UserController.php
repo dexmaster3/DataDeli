@@ -100,7 +100,7 @@ class UserController extends BaseController {
         }
 
         return View::make('users.show')
-            ->with('user', $user);
+            ->with('user', $user)->with('pageId', $id);
     }
 
     /**
@@ -183,6 +183,42 @@ class UserController extends BaseController {
 
         Session::flash('message', 'User has been wiped (dependant accounts transferred to you)');
         return Redirect::to('users');
+    }
+
+    public function userProfilePost()
+    {
+        $rules = array(
+            'content' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()){
+            return Redirect::to('users/' . $id)->withErrors($validator)->withInput(Input::all());
+        } else {
+            $user = Auth::user();
+            $pageId = Input::get('pageId');
+            $posting = new UserPost;
+            $posting->content = Input::get('content');
+            $posting->user_id = $user->id;
+            $posting->profile_user_id = $pageId;
+            $user->postings()->save($posting);
+
+            $postedToUser = User::find($pageId);
+            $postedToUser->profilePosts()->save($posting);
+
+            return Redirect::to('/users/' . $pageId);
+        }
+    }
+
+    public function userProfileComment()
+    {
+        $parentPost = UserPost::find(Input::get('commentParent'));
+        $user = Auth::user();
+
+        $comment = new PostComment;
+        $comment->content = Input::get('comment');
+        $comment->user_id = $user->id;
+        $comment->parent_post_id = $parentPost->id;
+        $parentPost->commentPosts()->save($comment);
     }
 
 }

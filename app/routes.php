@@ -54,6 +54,8 @@ Route::group(array('before' => 'auth'), function () {
 
     Route::group(array('before' => 'role'), function () {
         Route::resource('users', 'UserController');
+        Route::post('userProfilePost', 'UserController@userProfilePost');
+        Route::post('userProfileComment', 'UserController@userProfileComment');
     });
 
     Route::post('upload', 'UploadController@upload');
