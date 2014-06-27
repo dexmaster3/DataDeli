@@ -24,7 +24,7 @@ class CreateOffersTable extends Migration {
             $table->string('friendlyFromLines');
             $table->string('affiliateLink', 500);
             $table->string('offerUnsubscribe', 200);
-            $table->foreign('user_id')->references('id')->on('users')->on_update('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
 
             $table->timestamps();

@@ -18,12 +18,6 @@
 
     <div class="col-sm-12">
         <div id="myCarousel" class="carousel fade profile-carousel">
-            <div class="air air-bottom-right padding-10">
-                <a href="javascript:void(0);" class="btn txt-color-white bg-color-teal btn-sm"><i
-                        class="fa fa-check"></i> Follow</a>&nbsp; <a href="javascript:void(0);"
-                                                                     class="btn txt-color-white bg-color-pinkDark btn-sm"><i
-                        class="fa fa-link"></i> Connect</a>
-            </div>
             <div class="air air-top-left padding-10">
                 <h4 class="txt-color-white font-md">Joined {{ $user->friendlyCreatedAt() }}</h4>
             </div>
@@ -54,7 +48,7 @@
         <div class="row">
 
             <div class="col-sm-3 profile-pic">
-                <img src="http://www.gravatar.com/avatar/{{$user->gravatar}}">
+                <img src="{{ $user->gravatar() }}">
 
                 <div class="padding-10">
 <!--                    <h4 class="font-md"><strong>1,543</strong>-->
@@ -105,10 +99,6 @@
 
                 </p>
                 <br>
-                <a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i> Send
-                    Message</a>
-                <br>
-                <br>
 
             </div>
             <div class="col-sm-3">
@@ -118,7 +108,7 @@
                 <ul class="list-inline friends-list">
                     @if (isset($user->children))
                     @foreach ($user->children as $child)
-                    <li><img src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($child->email)))}}"></li>
+                    <li><a href="{{ URL::to('/users/' . $child->id) }}"><img src="{{ $child->gravatar() }}"></a></li>
                     @endforeach
                     @endif
                 </ul>

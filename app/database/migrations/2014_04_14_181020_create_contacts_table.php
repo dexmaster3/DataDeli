@@ -15,7 +15,7 @@ class CreateContactsTable extends Migration {
 		Schema::create('contacts', function($table){
             $table->increments('id');
 
-            $table->foreign('user_id')->references('id')->on('users')->on_update('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->string('firstName');
             $table->string('lastName');

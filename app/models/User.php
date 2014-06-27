@@ -79,6 +79,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     {
         return $this->hasMany('UserPost', 'profile_user_id', 'id')->orderBy('created_at', 'DESC');
     }
+    public function gravatar()
+    {
+        return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email)));
+    }
 
     public function friendlyCreatedAt()
     {
@@ -87,15 +91,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface
         } else {
             return date("g:i a F j, Y", strtotime($this->created_at));
         }
-    }
-    public function delete()
-    {
-        $this->contact()->delete();
-        // could be Contact::where('user_id', $this->id)->delete()
-
-        $this->offers()->delete();
-
-        return parent::delete();
     }
     public function getRememberToken()
     {

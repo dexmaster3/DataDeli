@@ -37,8 +37,7 @@ class LoginController extends BaseController {
             // attempt to do the login
             if (Auth::attempt($userdata)) {
 
-                $user = Auth::user();
-                return Redirect::to('/users/' . $user->id);
+                return Redirect::to('/users/profile');
 
             } else {
 
