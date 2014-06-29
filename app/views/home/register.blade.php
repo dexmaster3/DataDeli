@@ -2,67 +2,67 @@
 
 @section('head')
 
-    <!-- Basic Styles -->
+<!-- Basic Styles -->
 {{ HTML::style('css/font-awesome.min.css'); }}
 
-    <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
 {{ HTML::style('css/smartadmin-production.css') }}
 {{ HTML::style('css/smartadmin-skins.css') }}
 
-    <!-- FAVICONS -->
-    <link rel="shortcut icon" href="{{ asset('/img/favicon/favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('/img/favicon/favicon.ico') }}" type="image/x-icon">
+<!-- FAVICONS -->
+<link rel="shortcut icon" href="{{ asset('/img/favicon/favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ asset('/img/favicon/favicon.ico') }}" type="image/x-icon">
 
-    <!-- GOOGLE FONT -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+<!-- GOOGLE FONT -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
 @stop
 
 @section('content')
 <div id="login" class="animated fadeInDown">
 
-<div id="main" role="main" style="margin-top: 50px;">
+    <div id="main" role="main" style="margin-top: 50px;">
 
-    <!-- MAIN CONTENT -->
-    <div id="content" class="container" style="padding-top: 50px;">
+        <!-- MAIN CONTENT -->
+        <div id="content" class="container" style="padding-top: 50px;">
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
-                <h1 class="txt-color-red login-header-big">SmartAdmin</h1>
-                <div class="hero">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+                    <h1 class="txt-color-red login-header-big">SmartAdmin</h1>
+                    <div class="hero">
 
-                    <div class="pull-left login-desc-box-l">
-                        <h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
-                        <div class="login-app-icons">
-                            <a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
-                            <a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
+                        <div class="pull-left login-desc-box-l">
+                            <h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
+                            <div class="login-app-icons">
+                                <a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
+                                <a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
+                            </div>
+                        </div>
+
+                        <img src="img/demo/iphoneview.png" class="pull-right display-image" alt="" style="width:210px">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
+                            <p>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <h5 class="about-heading">Not just your average template!</h5>
+                            <p>
+                                Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
+                            </p>
                         </div>
                     </div>
 
-                    <img src="img/demo/iphoneview.png" class="pull-right display-image" alt="" style="width:210px">
-
                 </div>
-
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
-                        <p>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
-                        </p>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <h5 class="about-heading">Not just your average template!</h5>
-                        <p>
-                            Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
-                <div class="well no-padding">
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+                    <div class="well no-padding">
                         {{ Form::open(array('url' => 'login', 'class' => 'smart-form client-form', 'id' => 'login-form')) }}
                         <header>
-                            Sign In
+                            Register
                         </header>
 
                         <fieldset>
@@ -70,54 +70,52 @@
                                 <p class="bg-danger" style="text-align: center;font-size:20px;">
                                     {{Session::get('loginfailed')}}
                                 </p>
-                                <label class="label">E-mail</label>
+                                <label class="label">Your E-mail</label>
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
                                     {{ Form::text('email', Input::old('email'), array('placeholder' => 'email@domain.com')) }}
-                                    <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter email address/username</b></label>
+                                    <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Verification will be sent here!</b></label>
                             </section>
 
                             <section>
                                 <label class="label">Password</label>
                                 <label class="input"> <i class="icon-append fa fa-lock"></i>
                                     {{ Form::password('password') }}
-                                    <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
-                                <div class="note">
-                                    <a href="forgotpassword.html">Forgot password?</a>
-                                </div>
+                                    <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Choose your password</b> </label>
                             </section>
-
-<!--                            <section>-->
-<!--                                <label class="checkbox">-->
-<!--                                    <input type="checkbox" name="remember" checked="">-->
-<!--                                    <i></i>Stay signed in</label>-->
-<!--                            </section>-->
+                            <section>
+                                <label class="label">Repeat Password</label>
+                                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                    {{ Form::password('password_confirmation') }}
+                                    <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Confirm password</b>
+                                </label>
+                            </section>
                         </fieldset>
                         <footer>{{ Form::submit('Submit!') }}
                         </footer>
-                    {{ Form::close() }}
+                        {{ Form::close() }}
+
+                    </div>
+
+                    <h5 class="text-center"> - Or sign in using -</h5>
+
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
 
                 </div>
-
-                <h5 class="text-center"> - Or sign in using -</h5>
-
-                <ul class="list-inline text-center">
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                </ul>
-
             </div>
         </div>
-    </div>
 
-</div>
     </div>
+</div>
 @stop
 
 @section('scripts')

@@ -21,7 +21,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login">Login</a></li>
+                <li><a href="{{ URL::to('/login') }}">Login</a></li>
+                <li><a href="{{ URL::to('/register') }}">Register</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

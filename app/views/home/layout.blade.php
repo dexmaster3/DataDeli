@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('home.head')
+    @yield('head')
 </head>
 <body>
 @include('home.navbar')

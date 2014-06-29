@@ -23,14 +23,6 @@ App::after(function($request, $response)
 });
 
 
-Route::filter('role', function()
-{
-    if (Auth::user()->role > 4)
-    {
-        return Redirect::to('/');
-    }
-});
-
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters

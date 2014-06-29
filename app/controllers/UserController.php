@@ -189,7 +189,6 @@ class UserController extends BaseController {
     public function profile()
     {
         $user = Auth::user();
-        $user->gravatar = Hash::make($user->email);
 
         $children = array();
         foreach ($user->subUsers as $subs){

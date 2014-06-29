@@ -12,10 +12,9 @@ Route::get('/contact', function () {
 
 
 Route::get('login', array('uses' => 'LoginController@showLogin'));
-
 Route::post('login', array('uses' => 'LoginController@doLogin'));
-
 Route::get('logout', array('uses' => "LoginController@doLogout"));
+Route::get('register', 'HomeController@showRegister');
 
 
 

@@ -8,5 +8,8 @@
 
 class HomeController extends BaseController
 {
-
+    public function showRegister()
+    {
+        return View::make('home.register');
+    }
 }
