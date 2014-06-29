@@ -4,7 +4,13 @@ class LoginController extends BaseController {
 
     public function showLogin()
     {
-        return View::make('login');
+        $user = Auth::user();
+        if (isset($user) && $user->activated) {
+            return Redirect::to('/users/profile');
+        } else {
+            Auth::logout();
+            return View::make('login');
+        }
     }
 
     public function doLogin()
@@ -36,8 +42,16 @@ class LoginController extends BaseController {
 
             // attempt to do the login
             if (Auth::attempt($userdata)) {
-
-                return Redirect::to('/users/profile');
+                $user = Auth::user();
+                if ($user->activated) {
+                    return Redirect::to('/users/profile');
+                } else {
+                    $message = array(
+                        'title' => 'Hold on!',
+                        'content' => 'Please activate your account first by following our email link <br/> If you need another click <a href=' . action("HomeController@resendActivation", $user->id) . '>Here</a>'
+                    );
+                    return View::make('home.message')->with('message', $message);
+                }
 
             } else {
 
@@ -45,9 +59,7 @@ class LoginController extends BaseController {
                 return Redirect::to('login')->with('loginfailed', 'Incorrect Email/Password')->withInput(Input::except('password'));
 
             }
-
         }
-
     }
 
     public function doLogout()

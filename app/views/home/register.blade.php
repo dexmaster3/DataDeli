@@ -60,11 +60,15 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
                     <div class="well no-padding">
-                        {{ Form::open(array('url' => 'login', 'class' => 'smart-form client-form', 'id' => 'login-form')) }}
+                        {{ Form::open(array('url' => 'register', 'class' => 'smart-form client-form', 'id' => 'login-form')) }}
                         <header>
                             Register
+                            @if($errors->has())
+                                @foreach ($errors->all() as $error)
+                                    <div class="bg-danger" style="margin: 5px;padding:10px;">{{ $error }}</div>
+                                @endforeach
+                            @endif
                         </header>
-
                         <fieldset>
                             <section>
                                 <p class="bg-danger" style="text-align: center;font-size:20px;">
@@ -90,7 +94,7 @@
                                 </label>
                             </section>
                         </fieldset>
-                        <footer>{{ Form::submit('Submit!') }}
+                        <footer>{{ Form::submit('Register') }}
                         </footer>
                         {{ Form::close() }}
 

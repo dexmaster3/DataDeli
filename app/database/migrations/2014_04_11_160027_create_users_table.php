@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration {
 			$table->string('email')->unique();
 			$table->string('name');
 			$table->string('password');
+            $table->boolean('activated');
+            $table->string('activation_guid');
             $table->integer('role');
             $table->integer('parent_id')->unsigned();
 

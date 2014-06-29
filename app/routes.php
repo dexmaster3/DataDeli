@@ -15,11 +15,14 @@ Route::get('login', array('uses' => 'LoginController@showLogin'));
 Route::post('login', array('uses' => 'LoginController@doLogin'));
 Route::get('logout', array('uses' => "LoginController@doLogout"));
 Route::get('register', 'HomeController@showRegister');
+Route::post('register', 'HomeController@sendRegister');
+Route::get('activate/{id}/{activate}', 'HomeController@activateAccount');
+Route::get('resend/{id}', 'HomeController@resendActivation');
 
 
 
-Route::group(array('before' => 'auth'), function () {
-
+Route::group(array('before' => 'auth|activated'), function ()
+{
     Route::resource('offers', 'OfferController');
 
     Route::group(array('prefix' => 'users'), function () {

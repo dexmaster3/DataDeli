@@ -22,6 +22,13 @@ App::after(function($request, $response)
 	//
 });
 
+Route::filter('activated', function()
+{
+    $user = Auth::user();
+    if (!$user->activated) {
+        return Redirect::to('login');
+    }
+});
 
 /*
 |--------------------------------------------------------------------------
