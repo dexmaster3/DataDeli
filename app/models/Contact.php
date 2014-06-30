@@ -9,4 +9,9 @@ class Contact extends Eloquent
     {
         return $this->belongsTo('User');
     }
+
+    public function fullName()
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
 } 

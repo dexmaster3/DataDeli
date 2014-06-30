@@ -88,6 +88,7 @@ class UserTableSeeder extends Seeder {
                 "name" => "Dexter Caffery",
                 "password" => Hash::make("codename1"),
                 "role" => 1,
+                "activated" => true,
                 'parent_id' => 0),
             array(
                 'email' => 'chipdip@yahoo.com',
