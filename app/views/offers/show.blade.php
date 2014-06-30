@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('logged.layout')
 @section('content')
 
 <h1>Showing {{ $offer->offerName }}</h1>

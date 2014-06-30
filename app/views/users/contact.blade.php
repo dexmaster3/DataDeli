@@ -19,38 +19,28 @@
             </div>
             <span class="widget-icon"><i class="fa fa-sitemap"></i></span>
 
-            <h2>Edit User</h2>
+            <h2>Add Your Contact Info</h2>
             <span class="jarviswidget-loader" style="display:none;"><i class="fa fa-refresh fa-spin"></i></span>
         </header>
         <div class="span6 stmart-form">
-            {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT'))}}
-
-            <div class="form-group">
-                {{ Form::label('email', "E-Mail (will be used for login)") }}
-                {{ Form::text('email', Input::old('email'), array('class' => 'form-control')) }}
-            </div>
-
-            <div class="form-group">
-                {{ Form::label('password', "Password") }}
-                {{ Form::password('password', Input::old('password'), array('class' => 'form-control')) }}
-            </div>
+            {{ Form::open(array('url' => 'contactinfo')) }}
 
             <div class="form-group">
                 {{ Form::label('firstName', "First Name") }}
-                {{ Form::text('firstName', $user->contact->firstName, array('class' => 'form-control')) }}
+                {{ Form::text('firstName', Input::old('firstName'), array('class' => 'form-control')) }}
             </div>
 
             <div class="form-group">
                 {{ Form::label('lastName', "Last Name") }}
-                {{ Form::text('lastName', $user->contact->lastName, array('class' => 'form-control')) }}
+                {{ Form::text('lastName', Input::old('lastName'), array('class' => 'form-control')) }}
             </div>
 
             <div class="form-group">
                 {{ Form::label('phone', "Phone Number") }}
-                {{ Form::text('phone', $user->contact->phone, array('class' => 'form-control')) }}
+                {{ Form::text('phone', Input::old('phone'), array('class' => 'form-control')) }}
             </div>
 
-            {{ Form::submit('Update user!', array('class' => 'btn btn-primary')) }}
+            {{ Form::submit('Update Info', array('class' => 'btn btn-primary')) }}
 
             {{ Form::close() }}
         </div>

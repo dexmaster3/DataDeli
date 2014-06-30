@@ -14,5 +14,6 @@
 </div>    <!--END MAIN PANEL-->
 
 @include('includes.footer')
+@yield('scripts')
 </body>
 </html>

@@ -29,6 +29,13 @@ Route::filter('activated', function()
         return Redirect::to('login');
     }
 });
+Route::filter('contact', function()
+{
+    $user = Auth::user();
+    if (!isset($user->contact->phone)) {
+        return View::make('users.contact')->with('user', $user);
+    }
+});
 
 /*
 |--------------------------------------------------------------------------

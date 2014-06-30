@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('logged.layout')
 @section('content')
 
 @if (Session::has('message'))
@@ -46,6 +46,8 @@
         </div>
     </div>
 </section>
+@stop
+@section('scripts')
 <script>
     $(document).ready(function () {
         //This section creates the subusers in tree view -> it needs to be on the view to get model data

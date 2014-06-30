@@ -32,55 +32,55 @@
 <!--<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>-->
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-    <?php echo HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js'); ?>
+{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js') }}
 <script>
     if (!window.jQuery.ui) {
-        document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+        document.write('<script src="/js/libs/jquery-2.0.2.min.js"><\/script>');
     }
 </script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js') }}
 <script>
     if (!window.jQuery.ui) {
-        document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+        document.write('<script src="/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
     }
 </script>
 
 <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
-<?php echo HTML::script('js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'); ?>
+{{ HTML::script('js/plugin/jquery-touch/jquery.ui.touch-punch.min.js') }}
 
 <!-- BOOTSTRAP JS -->
-<?php echo HTML::script('js/bootstrap/bootstrap.min.js'); ?>
+{{ HTML::script('js/bootstrap/bootstrap.min.js') }}
 
 <!-- CUSTOM NOTIFICATION -->
-<?php echo HTML::script('js/notification/SmartNotification.min.js'); ?>
+{{ HTML::script('js/notification/SmartNotification.min.js') }}
 
 <!-- JARVIS WIDGETS -->
-<?php echo HTML::script('js/smartwidgets/jarvis.widget.min.js'); ?>
+{{ HTML::script('js/smartwidgets/jarvis.widget.min.js') }}
 
 <!-- EASY PIE CHARTS -->
-<?php echo HTML::script('js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js'); ?>
+{{ HTML::script('js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js') }}
 
 <!-- SPARKLINES -->
-<?php echo HTML::script('js/plugin/sparkline/jquery.sparkline.min.js'); ?>
+{{ HTML::script('js/plugin/sparkline/jquery.sparkline.min.js') }}
 
 <!-- JQUERY VALIDATE -->
-<?php echo HTML::script('js/plugin/jquery-validate/jquery.validate.min.js'); ?>
+{{ HTML::script('js/plugin/jquery-validate/jquery.validate.min.js') }}
 
 <!-- JQUERY MASKED INPUT -->
-<?php echo HTML::script('js/plugin/masked-input/jquery.maskedinput.min.js'); ?>
+{{ HTML::script('js/plugin/masked-input/jquery.maskedinput.min.js') }}
 
 <!-- JQUERY SELECT2 INPUT -->
-<?php echo HTML::script('js/plugin/select2/select2.min.js'); ?>
+{{ HTML::script('js/plugin/select2/select2.min.js') }}
 
 <!-- JQUERY UI + Bootstrap Slider -->
-<?php echo HTML::script('js/plugin/bootstrap-slider/bootstrap-slider.min.js'); ?>
+{{ HTML::script('js/plugin/bootstrap-slider/bootstrap-slider.min.js') }}
 
 <!-- browser msie issue fix -->
-<?php echo HTML::script('js/plugin/msie-fix/jquery.mb.browser.min.js'); ?>
+{{ HTML::script('js/plugin/msie-fix/jquery.mb.browser.min.js') }}
 
 <!-- FastClick: For mobile devices -->
-<?php echo HTML::script('js/plugin/fastclick/fastclick.js'); ?>
+{{ HTML::script('js/plugin/fastclick/fastclick.js') }}
 
 <!--[if IE 7]>
 
@@ -90,24 +90,22 @@
 
 
 <!-- MAIN APP JS FILE -->
-<?php echo HTML::script('js/app.js'); ?>
-
-<!-- PAGE RELATED PLUGIN(S) -->
+{{ HTML::script('js/app.js') }}
 
 <!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
-<?php echo HTML::script('js/plugin/flot/jquery.flot.cust.js'); ?>
-<?php echo HTML::script('js/plugin/flot/jquery.flot.resize.js'); ?>
-<?php echo HTML::script('js/plugin/flot/jquery.flot.tooltip.js'); ?>
+{{ HTML::script('js/plugin/flot/jquery.flot.cust.js') }}
+{{ HTML::script('js/plugin/flot/jquery.flot.resize.js') }}
+{{ HTML::script('js/plugin/flot/jquery.flot.tooltip.js') }}
 
 <!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
-<?php echo HTML::script('js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js'); ?>
-<?php echo HTML::script('js/plugin/vectormap/jquery-jvectormap-world-mill-en.js'); ?>
+{{ HTML::script('js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js') }}
+{{ HTML::script('js/plugin/vectormap/jquery-jvectormap-world-mill-en.js') }}
 
 <!-- Full Calendar -->
-<?php echo HTML::script('js/plugin/fullcalendar/jquery.fullcalendar.min.js'); ?>
+{{ HTML::script('js/plugin/fullcalendar/jquery.fullcalendar.min.js') }}
 
 <!-- PAGE RELATED PLUGIN(S) -->
-<?php echo HTML::script('js/plugin/dropzone/dropzone.min.js'); ?>
+{{ HTML::script('js/plugin/dropzone/dropzone.min.js') }}
 
 <script type="text/javascript">
     $(document).ready(function() {

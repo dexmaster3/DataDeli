@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('logged.layout')
 @section('content')
     <style>
 table, th, td{

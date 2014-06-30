@@ -17,10 +17,10 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 
 			$table->string('email')->unique();
-			$table->string('name');
 			$table->string('password');
             $table->boolean('activated');
             $table->string('activation_guid');
+            $table->dateTime('activation_mail_sent');
             $table->integer('role');
             $table->integer('parent_id')->unsigned();
 

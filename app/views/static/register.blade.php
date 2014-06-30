@@ -1,22 +1,4 @@
 @extends('home.layout')
-
-@section('head')
-
-<!-- Basic Styles -->
-{{ HTML::style('css/font-awesome.min.css'); }}
-
-<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
-{{ HTML::style('css/smartadmin-production.css') }}
-{{ HTML::style('css/smartadmin-skins.css') }}
-
-<!-- FAVICONS -->
-<link rel="shortcut icon" href="{{ asset('/img/favicon/favicon.ico') }}" type="image/x-icon">
-<link rel="icon" href="{{ asset('/img/favicon/favicon.ico') }}" type="image/x-icon">
-
-<!-- GOOGLE FONT -->
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
-@stop
-
 @section('content')
 <div id="login" class="animated fadeInDown">
 
@@ -27,15 +9,11 @@
 
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
-                    <h1 class="txt-color-red login-header-big">SmartAdmin</h1>
+                    <h1 class="txt-color-red login-header-big">DexCaff</h1>
                     <div class="hero">
 
                         <div class="pull-left login-desc-box-l">
-                            <h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
-                            <div class="login-app-icons">
-                                <a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
-                                <a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
-                            </div>
+                            <h4 class="paragraph-header">Sign in at DexCaff.com to check out our logged section with all sorts of fun.</h4>
                         </div>
 
                         <img src="img/demo/iphoneview.png" class="pull-right display-image" alt="" style="width:210px">
@@ -123,62 +101,6 @@
 @stop
 
 @section('scripts')
-<!--================================================== -->
-
-<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-<script src="js/plugin/pace/pace.min.js"></script>
-
-<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script> if (!window.jQuery) { document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');} </script>
-
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script> if (!window.jQuery.ui) { document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');} </script>
-
-<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
-<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
-
-<!-- BOOTSTRAP JS -->
-<script src="/js/bootstrap/bootstrap.min.js"></script>
-
-<!-- CUSTOM NOTIFICATION -->
-<script src="/js/notification/SmartNotification.min.js"></script>
-
-<!-- JARVIS WIDGETS -->
-<script src="/js/smartwidgets/jarvis.widget.min.js"></script>
-
-<!-- EASY PIE CHARTS -->
-<script src="/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-
-<!-- SPARKLINES -->
-<script src="/js/plugin/sparkline/jquery.sparkline.min.js"></script>
-
-<!-- JQUERY VALIDATE -->
-<script src="/js/plugin/jquery-validate/jquery.validate.min.js"></script>
-
-<!-- JQUERY MASKED INPUT -->
-<script src="/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
-
-<!-- JQUERY SELECT2 INPUT -->
-<script src="/js/plugin/select2/select2.min.js"></script>
-
-<!-- JQUERY UI + Bootstrap Slider -->
-<script src="/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
-
-<!-- browser msie issue fix -->
-<script src="/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
-
-<!-- FastClick: For mobile devices -->
-<script src="/js/plugin/fastclick/fastclick.js"></script>
-
-<!--[if IE 7]>
-
-<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
-
-<![endif]-->
-<!-- MAIN APP JS FILE -->
-<script src="/js/app.js"></script>
-
 <script type="text/javascript">
     runAllForms();
 

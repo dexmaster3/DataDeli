@@ -9,7 +9,7 @@ class LoginController extends BaseController {
             return Redirect::to('/users/profile');
         } else {
             Auth::logout();
-            return View::make('login');
+            return View::make('static.login');
         }
     }
 
@@ -56,7 +56,7 @@ class LoginController extends BaseController {
             } else {
 
                 // validation not successful, send back to form
-                return Redirect::to('login')->with('loginfailed', 'Incorrect Email/Password')->withInput(Input::except('password'));
+                return Redirect::to('login')->with('message', 'Incorrect Email/Password')->withInput(Input::except('password'));
 
             }
         }
