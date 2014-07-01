@@ -7,7 +7,7 @@
 					<a href="javascript:void(0);" id="show-shortcut">
                         <img src="http://www.gravatar.com/avatar/{{md5(strtolower(trim(Auth::user()->email)))}}" alt="me" class="online" />
 						<span>
-							{{ Auth::user()->name }}
+							{{ Auth::user()->contact->fullName() }}
 						</span>
                         <i class="fa fa-angle-down"></i>
                     </a>

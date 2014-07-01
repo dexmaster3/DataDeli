@@ -105,10 +105,10 @@
                 <h1>
                     <small>Sub-Users</small>
                 </h1>
-                <ul class="list-inline friends-list">
+                <ul class="list-unstyled friends-list">
                     @if (isset($user->children))
                     @foreach ($user->children as $child)
-                    <li><a href="{{ URL::to('/users/' . $child->id) }}"><img src="{{ $child->gravatar() }}"></a></li>
+                    <li><a href="{{ URL::to('/users/' . $child->id) }}"><img src="{{ $child->gravatar() }}" alt="{{ $child->contact->fullName() }}"></a> {{ $child->contact->fullName() }}</li>
                     @endforeach
                     @endif
                 </ul>
@@ -144,7 +144,7 @@
             <li class="message">
                 <img src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($post->user->email)))}}" class="online" width="45px">
                 <span class="message-text"> <a href="{{ URL::to('/users/' . $post->user->id) }}" class="username">
-                        {{ $post->user->name }}
+                        {{ $post->user->contact->fullName() }}
                     </a>
                     {{ $post->content }}
                 </span>
@@ -168,7 +168,7 @@
             @foreach ($post->commentPosts as $comment)
             <li class="message message-reply">
                 <img src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($comment->user->email)))}}" class="online">
-                <span class="message-text"> <a href="{{ URL::to('/users/' . $comment->user->id) }}" class="username">{{ $comment->user->name }} </a> {{ $comment->content }} </span>
+                <span class="message-text"> <a href="{{ URL::to('/users/' . $comment->user->id) }}" class="username">{{ $comment->user->contact->fullName() }} </a> {{ $comment->content }} </span>
                 <ul class="list-inline font-xs">
                     @if (Auth::user()->id == $comment->user->id)
                     <li>

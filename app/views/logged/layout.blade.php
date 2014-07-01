@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-@include('includes.head')
+@include('logged.head')
 </head>
 <body class="">
-@include('includes.header')
-@include('includes.navigation')
+@include('logged.header')
+@include('logged.navigation')
 <!-- MAIN PANEL -->
 <div id="main" role="main">
     <div id="content">
@@ -13,7 +13,7 @@
     </div>    <!--END CONTENT-->
 </div>    <!--END MAIN PANEL-->
 
-@include('includes.footer')
+@include('logged.footer')
 @yield('scripts')
 </body>
 </html>

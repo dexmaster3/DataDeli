@@ -67,7 +67,13 @@ class ContactTableSeeder extends Seeder
                 'lastName' => 'McHanahan',
                 'email' => User::find(7)->email,
                 'phone' => '2064945849',
-                'user_id' => User::find(7)->id)
+                'user_id' => User::find(7)->id),
+            array(
+                'firstName' => 'Jeff',
+                'lastName' => 'Caffery',
+                'email' => User::find(8)->email,
+                'phone' => '3436575853',
+                'user_id' => User::find(8)->id)
         );
 
         foreach ($contacts as $contact)
@@ -85,45 +91,43 @@ class UserTableSeeder extends Seeder {
         $users = array(
             array(
                 'email' => "dexter@webforwardmedia.com",
-                "name" => "Dexter Caffery",
                 "password" => Hash::make("codename1"),
                 "role" => 1,
                 "activated" => true,
                 'parent_id' => 0),
             array(
                 'email' => 'chipdip@yahoo.com',
-                'name' => 'Chip Dipkus',
                 'password' => Hash::make('codename1'),
                 'role' => 1,
                 'parent_id' => 1),
             array(
                 'email' => 'drjimes@yahoo.com',
-                'name' => 'Doctor Jimes Tooper',
                 'password' => Hash::make('codename1'),
                 'role' => 4,
                 'parent_id' => 1),
             array(
                 'email' => 'hdonna@gmail.com',
-                'name' => 'H Donna Gust',
                 'password' => Hash::make('codename1'),
                 'role' => 3,
                 'parent_id' => 3),
             array(
                 'email' => 'willgrello@gmail.com',
-                'name' => 'Will Grello',
                 'password' => Hash::make('codename1'),
                 'role' => 3,
                 'parent_id' => 2),
             array(
                 'email' => 'grum@gmail.com',
-                'name' => 'Grum',
                 'password' => Hash::make('codename1'),
                 'role' => 3,
                 'parent_id' => 4),
             array(
                 'email' => 'smchanahan@gmail.com',
-                'name' => 'Steve McHanahan',
                 'password' => Hash::make('codename1'),
+                'role' => 3,
+                'parent_id' => 4),
+            array(
+                'email' => 'jeff_caffery2@yahoo.com',
+                'password' => Hash::make('green125'),
                 'role' => 3,
                 'parent_id' => 4)
         );
