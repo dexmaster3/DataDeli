@@ -15,11 +15,11 @@ class CreateUserPostsTable extends Migration {
         Schema::create('user_posts', function($table){
             $table->increments('id');
 
-            $table->foreign('user_id')->references('id')->on('users')->on_update('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->string('content');
-            $table->foreign('profile_user_id')->references('id')->on('users')->on_update('cascade');
+            $table->foreign('profile_user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('profile_user_id')->unsigned();
 
             $table->timestamps();

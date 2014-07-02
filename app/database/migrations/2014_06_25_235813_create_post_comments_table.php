@@ -15,11 +15,11 @@ class CreatePostCommentsTable extends Migration {
         Schema::create('post_comments', function($table){
             $table->increments('id');
 
-            $table->foreign('user_id')->references('id')->on('users')->on_update('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->string('content');
-            $table->foreign('parent_post_id')->references('id')->on('user_posts')->on_update('cascade');
+            $table->foreign('parent_post_id')->references('id')->on('user_posts')->onDelete('cascade');
             $table->integer('parent_post_id')->unsigned();
 
             $table->timestamps();

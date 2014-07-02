@@ -111,8 +111,7 @@ class UserController extends BaseController {
      */
     public function edit($id)
     {
-        //
-        $user = User::find($id);
+        $user = Auth::user();
 
         return View::make('users.edit')
             ->with('user', $user);
@@ -128,9 +127,10 @@ class UserController extends BaseController {
     {
         //
         $rules = array(
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:5'
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -140,9 +140,11 @@ class UserController extends BaseController {
                 ->withInput(Input::except('password'));
         } else {
             $user = User::find($id);
-            $user->name = Input::get('name');
             $user->email = Input::get('email');
-            $user->password = Hash::make(Input::get('password'));
+            $password = Input::get('password');
+            if (strlen($password) > 5) {
+                $user->password = Hash::make($password);
+            }
             $user->save();
             if ($user->contact->id > 0) {
                 $contact = Contact::find($user->contact->id);
@@ -160,7 +162,7 @@ class UserController extends BaseController {
                 $user->contact()->save($contact);
             }
 
-            Session::flash('message', 'Successfully created user');
+            Session::flash('message', 'Successfully updated user information');
             return Redirect::to('users');
         }
     }
@@ -246,6 +248,11 @@ class UserController extends BaseController {
         }
         if (Input::get('postId') > 0) {
             $post = UserPost::find(Input::get('postId'));
+            $children = $post->commentPosts;
+            foreach ($children as $singlecomment)
+            {
+                $singlecomment->delete();
+            }
             if ($post->user->id == $user->id){
                 $post->delete();
             }

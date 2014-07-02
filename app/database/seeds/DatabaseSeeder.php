@@ -73,7 +73,13 @@ class ContactTableSeeder extends Seeder
                 'lastName' => 'Caffery',
                 'email' => User::find(8)->email,
                 'phone' => '3436575853',
-                'user_id' => User::find(8)->id)
+                'user_id' => User::find(8)->id),
+            array(
+                'firstName' => 'Molly',
+                'lastName' => 'Caffery',
+                'email' => User::find(9)->email,
+                'phone' => '239454674',
+                'user_id' => User::find(9)->id)
         );
 
         foreach ($contacts as $contact)
@@ -129,7 +135,15 @@ class UserTableSeeder extends Seeder {
                 'email' => 'jeff_caffery2@yahoo.com',
                 'password' => Hash::make('green125'),
                 'role' => 3,
-                'parent_id' => 4)
+                'activated' => true,
+                'parent_id' => 4),
+            array(
+                'email' => 'mollycaffery10@gmail.com',
+                'password' => Hash::make('dogdigger36'),
+                'role' => 3,
+                'activated' => true,
+                'parent_id' => 1
+            )
         );
 
         foreach ($users as $user)

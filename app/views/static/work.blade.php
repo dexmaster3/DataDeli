@@ -1,6 +1,6 @@
 @extends('home.layout')
 @section('content')
-<div class="container animated fadeInDown">
+<div class="navbumper container animated fadeInDown">
     <div class="row-fluid section">
         <div class="col-lg-12">
             <h1>My Work</h1>

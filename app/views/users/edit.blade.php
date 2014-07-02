@@ -22,37 +22,54 @@
             <h2>Edit User</h2>
             <span class="jarviswidget-loader" style="display:none;"><i class="fa fa-refresh fa-spin"></i></span>
         </header>
-        <div class="span6 stmart-form">
-            {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT'))}}
-
+        <div class="content">
+<div class="widget-body no-padding">
+            {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT', 'class' => 'span6 smart-form'))}}
+            <header>
+                Edit your User Information
+            </header>
+            <fieldset>
             <div class="form-group">
-                {{ Form::label('email', "E-Mail (will be used for login)") }}
+                {{ Form::label('email', "E-Mail (will be used for login)", array('class' => 'label')) }}
+                <label class="input">
                 {{ Form::text('email', Input::old('email'), array('class' => 'form-control')) }}
+                    </label>
             </div>
 
             <div class="form-group">
-                {{ Form::label('password', "Password") }}
+                {{ Form::label('password', "Password", array('class' => 'label')) }}
+                <label class="input">
                 {{ Form::password('password', Input::old('password'), array('class' => 'form-control')) }}
+                    </label>
             </div>
 
             <div class="form-group">
-                {{ Form::label('firstName', "First Name") }}
+                {{ Form::label('firstName', "First Name", array('class' => 'label')) }}
+                <label class="input">
                 {{ Form::text('firstName', $user->contact->firstName, array('class' => 'form-control')) }}
+                    </label>
             </div>
 
             <div class="form-group">
-                {{ Form::label('lastName', "Last Name") }}
+                {{ Form::label('lastName', "Last Name", array('class' => 'label')) }}
+                <label class="input">
                 {{ Form::text('lastName', $user->contact->lastName, array('class' => 'form-control')) }}
+                    </label>
             </div>
 
             <div class="form-group">
-                {{ Form::label('phone', "Phone Number") }}
+                {{ Form::label('phone', "Phone Number", array('class' => 'label')) }}
+                <label class="input">
                 {{ Form::text('phone', $user->contact->phone, array('class' => 'form-control')) }}
+                    </label>
             </div>
-
+            </fieldset>
+            <footer>
             {{ Form::submit('Update user!', array('class' => 'btn btn-primary')) }}
 
+            </footer>
             {{ Form::close() }}
+</div>
         </div>
     </div>
 </section>

@@ -13,14 +13,14 @@
 <!--        <li>-->
 <!--            <a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>-->
 <!--        </li>-->
-<!--        <li>-->
-<!--            <a href="#invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span> </a>-->
-<!--        </li>-->
+        <li>
+            <a href="{{ URL::to('/users/1/edit/') }}" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Edit Profile </span> </span> </a>
+        </li>
 <!--        <li>-->
 <!--            <a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>-->
 <!--        </li>-->
         <li>
-            <a href="{{ URL::to('/users/profile/') }}" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+            <a href="{{ URL::to('/users/profile/') }}" class="jarvismetro-tile big-cubes bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
         </li>
     </ul>
 </div>

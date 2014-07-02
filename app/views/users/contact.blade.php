@@ -22,7 +22,7 @@
             <h2>Add Your Contact Info</h2>
             <span class="jarviswidget-loader" style="display:none;"><i class="fa fa-refresh fa-spin"></i></span>
         </header>
-        <div class="span6 stmart-form">
+        <div class="span6 smart-form">
             {{ Form::open(array('url' => 'contactinfo')) }}
 
             <div class="form-group">
