@@ -14,14 +14,14 @@
 <!--            <a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>-->
 <!--        </li>-->
         <li>
-            <a href="{{ URL::to('/users/1/edit/') }}" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Edit Profile </span> </span> </a>
+            <a href="{{ URL::to('/users/profile/') }}" class="jarvismetro-tile big-cubes bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+        </li>
+        <li>
+            <a href="{{ URL::to('/users/1/edit/') }}" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Edit Profile </span> </span> </a>
         </li>
 <!--        <li>-->
 <!--            <a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>-->
 <!--        </li>-->
-        <li>
-            <a href="{{ URL::to('/users/profile/') }}" class="jarvismetro-tile big-cubes bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
-        </li>
     </ul>
 </div>
 <!-- END SHORTCUT AREA -->
@@ -48,50 +48,35 @@
 
 <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
 {{ HTML::script('js/plugin/jquery-touch/jquery.ui.touch-punch.min.js') }}
-
 <!-- BOOTSTRAP JS -->
 {{ HTML::script('js/bootstrap/bootstrap.min.js') }}
-
 <!-- CUSTOM NOTIFICATION -->
 {{ HTML::script('js/notification/SmartNotification.min.js') }}
-
 <!-- JARVIS WIDGETS -->
 {{ HTML::script('js/smartwidgets/jarvis.widget.min.js') }}
-
 <!-- EASY PIE CHARTS -->
 {{ HTML::script('js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js') }}
-
 <!-- SPARKLINES -->
 {{ HTML::script('js/plugin/sparkline/jquery.sparkline.min.js') }}
-
 <!-- JQUERY VALIDATE -->
 {{ HTML::script('js/plugin/jquery-validate/jquery.validate.min.js') }}
-
 <!-- JQUERY MASKED INPUT -->
 {{ HTML::script('js/plugin/masked-input/jquery.maskedinput.min.js') }}
-
 <!-- JQUERY SELECT2 INPUT -->
 {{ HTML::script('js/plugin/select2/select2.min.js') }}
-
 <!-- JQUERY UI + Bootstrap Slider -->
 {{ HTML::script('js/plugin/bootstrap-slider/bootstrap-slider.min.js') }}
-
 <!-- browser msie issue fix -->
 {{ HTML::script('js/plugin/msie-fix/jquery.mb.browser.min.js') }}
-
 <!-- FastClick: For mobile devices -->
 {{ HTML::script('js/plugin/fastclick/fastclick.js') }}
-
 <!--[if IE 7]>
 
         <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 
         <![endif]-->
-
-
 <!-- MAIN APP JS FILE -->
 {{ HTML::script('js/app.js') }}
-
 
 <!-- Your GOOGLE ANALYTICS CODE Below -->
 <script type="text/javascript">

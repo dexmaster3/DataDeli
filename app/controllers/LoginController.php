@@ -55,8 +55,8 @@ class LoginController extends BaseController {
 
             } else {
 
-                // validation not successful, send back to form
-                return Redirect::to('login')->with('message', 'Incorrect Email/Password')->withInput(Input::except('password'));
+                Session::flash('message', 'Incorrect Email/Password');
+                return Redirect::to('login')->withInput(Input::except('password'));
 
             }
         }
@@ -65,6 +65,7 @@ class LoginController extends BaseController {
     public function doLogout()
     {
         Auth::logout();
+        Session::flash('message', 'You have been logged out');
         return Redirect::to('login');
     }
 }

@@ -5,12 +5,12 @@
 <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
 <section id="widget-grid">
-    <div class="jarviswidget jarviswidget-color-orange jarviswidget-sortable" id="wid-id-0"
+    <div class="jarviswidget jarviswidget-sortable" id="wid-id-0"
          data-widget-editbutton="false" role="widget">
         <header role="heading">
             <div class="jarviswidget-ctrls" role="menu">
-                <a href="{{ URL::to('users/create') }}" class="button-icon" rel="tooltip" data-placement="bottom"><i
-                        class="fa fa-plus"> Add New SubUser</i></a>
+                <a href="{{ URL::to('users/create') }}" class="button-icon" rel="tooltip" data-placement="bottom">&nbsp; <i
+                        class="fa fa-plus"> Add New SubUser &nbsp; </i></a>
                 <a href="#" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" data-placement="bottom"
                    data-original-title="Fullscreen"><i class="fa fa-resize-full"></i></a>
                 <a href="#" class="button-icon jarviswidget-delete-btn" rel="tooltip" data-placement="bottom"
@@ -21,7 +21,10 @@
             <h2>User Tree View</h2>
             <span class="jarviswidget-loader" style="display:none;"><i class="fa fa-refresh fa-spin"></i></span>
         </header>
-        <div class="span6 tree stmart-form">
+        <div class="span6 tree smart-form">
+            <header>
+                Your SubUsers
+            </header>
             <ul role="tree">
                 @foreach($childtree as $user)
                 @if($user->indent == 0)
@@ -42,11 +45,17 @@
                 </li>
                 @endif
                 @endforeach
+                @if (count($childtree) < 1)
+                <li class="" role="treeitem">
+                    <span class="bg-warning">You have no sub-users - Feel free to create some</span>
+                </li>
+                @endif
             </ul>
         </div>
     </div>
 </section>
 @stop
+
 @section('scripts')
 <script>
     $(document).ready(function () {

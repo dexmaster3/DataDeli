@@ -22,28 +22,40 @@
             <h2>Add Your Contact Info</h2>
             <span class="jarviswidget-loader" style="display:none;"><i class="fa fa-refresh fa-spin"></i></span>
         </header>
-        <div class="span6 smart-form">
-            {{ Form::open(array('url' => 'contactinfo')) }}
-
+        <div class="content">
+        <div class="widget-body no-padding">
+            {{ Form::open(array('url' => 'contactinfo', 'class' => 'span6 smart-form')) }}
+            <header>
+                Add your contact information
+            </header>
+            <fieldset>
             <div class="form-group">
-                {{ Form::label('firstName', "First Name") }}
+                {{ Form::label('firstName', "First Name", array('class' => 'label')) }}
+                <label class="input">
                 {{ Form::text('firstName', Input::old('firstName'), array('class' => 'form-control')) }}
+                    </label>
             </div>
 
             <div class="form-group">
-                {{ Form::label('lastName', "Last Name") }}
+                {{ Form::label('lastName', "Last Name", array('class' => 'label')) }}
+                <label class="input">
                 {{ Form::text('lastName', Input::old('lastName'), array('class' => 'form-control')) }}
+                </label>
             </div>
 
             <div class="form-group">
-                {{ Form::label('phone', "Phone Number") }}
+                {{ Form::label('phone', "Phone Number", array('class' => 'label')) }}
+                <label class="input">
                 {{ Form::text('phone', Input::old('phone'), array('class' => 'form-control')) }}
+                </label>
             </div>
-
+            </fieldset>
+            <footer>
             {{ Form::submit('Update Info', array('class' => 'btn btn-primary')) }}
-
+            </footer>
             {{ Form::close() }}
         </div>
     </div>
+        </div>
 </section>
 @stop

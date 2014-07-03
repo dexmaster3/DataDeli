@@ -21,8 +21,13 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ URL::to('/login') }}">Login</a></li>
+                @if (Auth::user())
+                <li><a href="{{ URL::to('/users/profile') }}">Logged Area</a></li>
+                <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
+                @else
                 <li><a href="{{ URL::to('/register') }}">Register</a></li>
+                <li><a href="{{ URL::to('/login') }}">Login</a></li>
+                @endif
             </ul>
         </div>
         <!-- /.navbar-collapse -->
