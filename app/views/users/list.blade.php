@@ -23,7 +23,41 @@
             <span class="jarviswidget-loader" style="display:none;"><i class="fa fa-refresh fa-spin"></i></span>
         </header>
         <div class="content">
+            <div class="widget-body no-padding">
+                <div class="widget-body-toolbar">
+                    <div class="widget-body-toolbar"></div>
+                    <table id="userListDataTable" class="table table-striped table-bordered table-hover dataTable">
+                        <thead>
+                        <tr role="row">
+                            <th>User Email</th>
+                            <th>User Name</th>
+                            <th>Phone Number</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($users as $user)
+                        <tr>
+                            <td><a href="{{ url('users/' . $user->id) }}">{{ $user->email }}</a></td>
+                            <td>{{ $user->contact->firstName }} {{ $user->contact->lastName }}</td>
+                            <td>{{ $user->contact->phone }}</td>
+                        </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+@stop
+
+@section('scripts')
+{{ HTML::script('js/plugin/datatables/jquery.dataTables-cust.js') }}
+{{ HTML::script('js/plugin/datatables/DT_bootstrap.js') }}
+<script>
+    $(document).ready(function(){
+        $('#userListDataTable').dataTable({
+        });
+    });
+</script>
 @stop

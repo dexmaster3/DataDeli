@@ -209,7 +209,8 @@ class UserController extends BaseController {
 
     public function listing()
     {
-        return View::make('users.list');
+        $users = User::all();
+        return View::make('users.list')->with('users', $users);
     }
 
     public function userProfilePost()
