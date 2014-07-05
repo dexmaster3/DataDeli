@@ -22,6 +22,8 @@ Route::get('testerarea', function(){return View::make('users.contact')->with('us
 
 Route::group(array('before' => 'auth|activated|contact'), function ()
 {
+    Route::get('venttest', 'VentriloController@venttest');
+
     Route::group(array('prefix' => 'users'), function () {
         Route::get('profile', 'UserController@profile');
         Route::get('list', 'UserController@listing');
