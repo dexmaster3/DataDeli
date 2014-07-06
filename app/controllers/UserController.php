@@ -19,7 +19,8 @@ class UserController extends BaseController {
         //This array used as reference in the getAllChildrenIds function -- needed to get 'subSubUsers'
         $currentUser = Auth::user();
         $childUsers = array();
-        userHelper::getAllChildrenIds($currentUser, $childUsers);
+        $user_helper = new userHelper;
+        $user_helper->getAllChildrenIds($currentUser, $childUsers);
         return View::make('users.index')->with('childtree', $childUsers);
     }
 

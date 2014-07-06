@@ -8,7 +8,7 @@
 
 class userHelper
 {
-    static function getAllChildrenIds($parent, &$previousChildren, $indent = 0)
+    function getAllChildrenIds($parent, &$previousChildren, $indent = 0)
     {
         if($parent->subUsers->count() > 0)
         {
