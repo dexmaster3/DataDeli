@@ -1,23 +1,39 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Dexter
  * Date: 7/4/14
  * Time: 6:50 PM
  */
-
 class VentriloController extends BaseController
 {
-    private function channelDisplay(&$stat, &$return_string, $cid, $name)
+    private function channelDisplay(&$stat, $name, $cid, &$send_string)
     {
         $chan = $stat->ChannelFind($cid);
-        echo "<tr><td><strong>$name</strong><table class=\"ventTable\" width=\"95%\" border=\"0\" align=\"right\">";
+        $protflag = "";
+        if ($name == $stat->m_name)
+        {
+            $protflag = "<img src=\"/img/staticpages/venticon_server.png\" />";
+        }
+        else if (isset($chan->m_prot) && $chan->m_prot)
+        {
+            $protflag = "<img src=\"/img/staticpages/venticon_chanpassopen.png\" />";
+        }
+        else
+        {
+            $protflag = "<img src=\"/img/staticpages/venticon_chanopen.png\" />";
+        }
+        $send_string .= "<tr><td><div class=\"channelName\">$protflag $name</div><table class=\"ventTable\" width=\"95%\" border=\"0\" align=\"right\">";
 
         // Display Client for this channel.
 
         foreach ($stat->m_clientlist as $client) {
+            //client's channel equals displayed channel, skip loop
+            if ($client->m_cid != $cid)
+                continue;
 
-            echo "<tr><td>";
+            $send_string .= "<tr><td><img src=\"/img/staticpages/venticon_voiceoff.png\"/> ";
 
             $flags = "";
 
@@ -28,89 +44,82 @@ class VentriloController extends BaseController
                 $flags .= "P";
 
             if (strlen($flags))
-                echo "\"$flags\" ";
+                $send_string .= "\"$flags\" ";
 
-            echo $client->m_name;
+            $send_string .= $client->m_name;
             if ($client->m_comm)
-                echo " ($client->m_comm)";
+                $send_string .= " ($client->m_comm)";
 
-            echo "</td></tr>";
+            $send_string .= "</td></tr>";
         }
 
         // Display sub-channels for this channel.
 
-        foreach ($stat->m_channellist as $subchannel)
-        {
-            if ($subchannel->m_pid == $cid)
-            {
+        foreach ($stat->m_channellist as $subchannel) {
+            if ($subchannel->m_pid == $cid) {
                 $cn = $subchannel->m_name;
-                if (strlen($subchannel->m_comm))
-                {
-                    $cn .= " (";
-                    $cn .= $subchannel->m_comm;
-                    $cn .= ")";
+                if (strlen($subchannel->m_comm)) {
+                    $cn .= " ($subchannel->m_comm)";
                 }
 
-                self::channelDisplay($stat, $cn, $subchannel->m_cid, $name);
+                self::channelDisplay($stat, $cn, $subchannel->m_cid, $send_string);
             }
         }
 
-        echo "      </table>\n";
-        echo "    </td>\n";
-        echo "  </tr>\n";
+        $send_string .= "</table></td></tr>";
     }
 
     public function ventrilo()
     {
 
-    $stat = new CVentriloStatus;
-    $stat->m_cmdprog	= 'C:/ventrilo_status.exe';	// Adjust accordingly.
-    $stat->m_cmdcode	= "2";					// Detail mode.
-    $stat->m_cmdhost	= "localhost";			// Assume ventrilo server on same machine.
-    $stat->m_cmdport	= "3784";				// Port to be statused.
-    $stat->m_cmdpass	= "";					// Status password if necessary.
+        $stat = new CVentriloStatus;
+        $stat->m_cmdprog = 'C:/ventrilo_status.exe'; // Adjust to ventrilo_status.exe file.
+        $stat->m_cmdcode = "2"; // Detail mode.
+        $stat->m_cmdhost = "localhost"; // Assume ventrilo server on same machine.
+        $stat->m_cmdport = "3784"; // Port to be statused.
+        $stat->m_cmdpass = ""; // Status password if necessary.
 
-    $rc = $stat->Request();
-    if ( $rc )
-    {
-        echo "CVentriloStatus->Request() failed vent server may be offline. <strong>$stat->m_error</strong><br><br>\n";
-    }
+        $rc = $stat->Request();
+        if ($rc) {
+            Session::flash('message', "CVentriloStatus->Request() failed vent server may be offline. <strong>$stat->m_error</strong><br><br>\n");
+        }
 
-    $weblink = "ventrilo://$stat->m_cmdhost:$stat->m_cmdport/servername=$stat->m_name";
-
-    $basic_info = array(
-        "Name" => $stat->m_name,
-        "Phonetic" => $stat->m_phonetic,
-        "Comment" => $stat->m_comment,
-        "Auth" => $stat->m_auth,
-        "Max Clients" => $stat->m_maxclients,
-        "Voice Codec" => $stat->m_voicecodec_desc,
-        "Voice Format" => $stat->m_voiceformat_desc,
-        "Uptime" => $stat->m_uptime,
-        "Platform" => $stat->m_platform,
-        "Version" => $stat->m_version,
-        "Channel Count" => $stat->m_channelcount,
-        "Client Count" => $stat->m_clientcount
+        //Server Information
+        $basic_info = array(
+            "Name" => $stat->m_name,
+            "Phonetic" => $stat->m_phonetic,
+            "Comment" => $stat->m_comment,
+            "Auth" => $stat->m_auth,
+            "Max Clients" => $stat->m_maxclients,
+            "Voice Codec" => $stat->m_voicecodec_desc,
+            "Voice Format" => $stat->m_voiceformat_desc,
+            "Uptime" => $stat->m_uptime,
+            "Platform" => $stat->m_platform,
+            "Version" => $stat->m_version,
+            "Channel Count" => $stat->m_channelcount,
+            "Client Count" => $stat->m_clientcount
         );
 
+        //User Information
         $user_info = array();
-        foreach ($stat->m_clientlist as $client)
-        {
+        foreach ($stat->m_clientlist as $client) {
             $client_stats = array(
-                "UID" => $client->m_uid,
-                "CID" => $client->m_cid,
-                "Sec" => $client->m_sec,
-                "Ping" => $client->m_ping,
                 "Name" => $client->m_name,
+                "Channel ID" => $client->m_cid,
+                "Seconds Connected" => $client->m_sec,
+                "Ping" => $client->m_ping,
                 "Comment" => $client->m_comm
             );
             array_push($user_info, $client_stats);
         }
 
-        $send_string = "";
-        $channel_info = $this->channelDisplay($stat, $send_string, 0, "Lobby");
+        //Channel Information
+        $channel_info_string = "";
+        $this->channelDisplay($stat, $stat->m_name, 0, $channel_info_string);
+
         return View::make('static.ventrilostatus')
             ->with('basic', $basic_info)
-            ->with('user', $user_info);
+            ->with('user', $user_info)
+            ->with('channel', $channel_info_string);
     }
 }

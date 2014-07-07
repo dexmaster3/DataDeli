@@ -12,21 +12,12 @@
     <div class="carousel-inner" style="margin-top: 50px;">
         <div class="item active">
             <div class="fill" style="background-image:url('/img/staticpages/back3.jpg');"></div>
-            <div class="carousel-caption">
-                <h1 style="color: black;">Vision</h1>
-            </div>
         </div>
         <div class="item">
             <div class="fill" style="background-image:url('/img/staticpages/back2.jpg');"></div>
-            <div class="carousel-caption">
-                <h1>Professionalism</h1>
-            </div>
         </div>
         <div class="item">
             <div class="fill" style="background-image:url('/img/staticpages/back1.jpg');"></div>
-            <div class="carousel-caption">
-                <h1>Pure Joy</h1>
-            </div>
         </div>
     </div>
 
