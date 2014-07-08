@@ -1,6 +1,22 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+html {
+    height:90%;
+}
 .navbumper {
     margin-top: 50px;
+}
+
+.footer {
+    background-color: #FFFFFF;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    padding: 2.5em;
+}
+
+.footer-push {
+    height: 100px;
 }
