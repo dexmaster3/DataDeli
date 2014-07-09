@@ -37,6 +37,10 @@
 <!--                <a href="{{URL::to('offers')}}"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span-->
 <!--                        class="menu-item-parent">Offers</span></a>-->
 <!--            </li>-->
+            <li class="{{Request::path() == 'listing' ? 'active' : '';}}">
+                <a href="{{URL::to('/listing')}}"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span
+                        class="menu-item-parent">User List</span></a>
+            </li>
             <li class="{{Request::path() == 'users/list' ? 'active' : '';}}">
                 <a href="{{URL::to('/users/list')}}"><i class="fa fa-lg fa-fw fa-table"></i> <span
                         class="menu-item-parent">User List</span></a>

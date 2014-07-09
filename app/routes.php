@@ -23,6 +23,10 @@ Route::get('ventrilo', 'VentriloController@ventrilo');
 
 Route::group(array('before' => 'auth|activated|contact'), function ()
 {
+    Route::group(array('prefix' => 'listing'), function(){
+
+    });
+    Route::resource('listing', 'ListingController');
     Route::group(array('prefix' => 'users'), function () {
         Route::get('profile', 'UserController@profile');
         Route::get('list', 'UserController@listing');
