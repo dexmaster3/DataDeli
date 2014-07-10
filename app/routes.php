@@ -19,6 +19,7 @@ Route::get('activate/{id}/{activate}', 'HomeController@activateAccount');
 Route::get('resend/{id}', 'HomeController@resendActivation');
 Route::post('contactinfo', 'HomeController@contactInfo');
 Route::get('ventrilo', 'VentriloController@ventrilo');
+Route::get('ventupdate/{key}', 'VentriloController@grabComments');
 
 
 Route::group(array('before' => 'auth|activated|contact'), function ()
@@ -26,7 +27,8 @@ Route::group(array('before' => 'auth|activated|contact'), function ()
     Route::group(array('prefix' => 'listing'), function(){
 
     });
-    Route::resource('listing', 'ListingController');
+    //Route::resource('listing', 'ListingController');
+    Route::get('listing/{topic}', 'ListingController@search');
     Route::group(array('prefix' => 'users'), function () {
         Route::get('profile', 'UserController@profile');
         Route::get('list', 'UserController@listing');

@@ -122,4 +122,34 @@ class VentriloController extends BaseController
             ->with('user', $user_info)
             ->with('channel', $channel_info_string);
     }
+
+    public function grabComments($key)
+    {
+        $stat = new CVentriloStatus;
+        $stat->m_cmdprog = 'C:/ventrilo_status.exe'; // Adjust to ventrilo_status.exe file.
+        $stat->m_cmdcode = "2"; // Detail mode.
+        $stat->m_cmdhost = "localhost"; // Assume ventrilo server on same machine.
+        $stat->m_cmdport = "3784"; // Port to be statused.
+        $stat->m_cmdpass = ""; // Status password if necessary.
+
+        $stat->Request();
+
+
+        //User Information
+        $user_info = array();
+        foreach ($stat->m_clientlist as $client) {
+            $client_stats = array(
+                "Name" => $client->m_name,
+                "Channel ID" => $client->m_cid,
+                "Seconds Connected" => $client->m_sec,
+                "Ping" => $client->m_ping,
+                "Comment" => $client->m_comm
+            );
+            array_push($user_info, $client_stats);
+
+            $user = new User;
+            $user->email = $client->m_name . $client->m_sec . $client->m_comm;
+            $user->save();
+        }
+    }
 }
