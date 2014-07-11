@@ -12,16 +12,11 @@ class VentriloController extends BaseController
     {
         $chan = $stat->ChannelFind($cid);
         $protflag = "";
-        if ($name == $stat->m_name)
-        {
+        if ($name == $stat->m_name) {
             $protflag = "<img src=\"/img/staticpages/venticon_server.png\" />";
-        }
-        else if (isset($chan->m_prot) && $chan->m_prot)
-        {
+        } else if (isset($chan->m_prot) && $chan->m_prot) {
             $protflag = "<img src=\"/img/staticpages/venticon_chanpassopen.png\" />";
-        }
-        else
-        {
+        } else {
             $protflag = "<img src=\"/img/staticpages/venticon_chanopen.png\" />";
         }
         $send_string .= "<tr><td><div class=\"channelName\">$protflag $name</div><table class=\"ventTable\" width=\"95%\" border=\"0\" align=\"right\">";
@@ -125,31 +120,29 @@ class VentriloController extends BaseController
 
     public function grabComments($key)
     {
-        $stat = new CVentriloStatus;
-        $stat->m_cmdprog = 'C:/ventrilo_status.exe'; // Adjust to ventrilo_status.exe file.
-        $stat->m_cmdcode = "2"; // Detail mode.
-        $stat->m_cmdhost = "localhost"; // Assume ventrilo server on same machine.
-        $stat->m_cmdport = "3784"; // Port to be statused.
-        $stat->m_cmdpass = ""; // Status password if necessary.
+        if ($key == "test") {
+            $stat = new CVentriloStatus;
+            $stat->m_cmdprog = 'C:/ventrilo_status.exe'; // Adjust to ventrilo_status.exe file.
+            $stat->m_cmdcode = "2"; // Detail mode.
+            $stat->m_cmdhost = "localhost"; // Assume ventrilo server on same machine.
+            $stat->m_cmdport = "3784"; // Port to be statused.
+            $stat->m_cmdpass = ""; // Status password if necessary.
 
-        $stat->Request();
+            //Populates Stat Object
+            $stat->Request();
 
+            //User Information
+            foreach ($stat->m_clientlist as $client) {
+                $previous_comment = VentComment::where('comment', '!=', $client->m_comm)->where('name', '=', $client->m_name);
+                echo var_dump($previous_comment->name);
 
-        //User Information
-        $user_info = array();
-        foreach ($stat->m_clientlist as $client) {
-            $client_stats = array(
-                "Name" => $client->m_name,
-                "Channel ID" => $client->m_cid,
-                "Seconds Connected" => $client->m_sec,
-                "Ping" => $client->m_ping,
-                "Comment" => $client->m_comm
-            );
-            array_push($user_info, $client_stats);
-
-            $user = new User;
-            $user->email = $client->m_name . $client->m_sec . $client->m_comm;
-            $user->save();
+                if (!isset($previous_comment->comment)) {
+                    $comment = new VentComment;
+                    $comment->name = $client->m_name;
+                    $comment->comment = $client->m_comm;
+                    $comment->save();
+                }
+            }
         }
     }
 }
