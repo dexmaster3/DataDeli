@@ -30,11 +30,15 @@
                 <a style="margin-top: 1em;" class="btn btn-primary" href="ventrilo://dexcaff.com:3784/servername=DexHouse">Click here to launch
                     Ventrilo and connect!</a>
         </div>
+        </div>
 
         <div class="row-fluid section">
             <div class="col-lg-12">
                 <table id="userInfoTable" class="table table-striped table-bordered table-hover dataTable">
                     <thead>
+                    <tr>
+                        <th colspan="5">Current Users</th>
+                    </tr>
                     <tr>
                         @if(isset($user[0]))
                         @foreach($user[0] as $userkey => $uservalue)
@@ -59,9 +63,33 @@
                 </table>
             </div>
         </div>
+    <div class="row-fluid section">
+        <div class="col-lg-12">
+            <table id="userCommentsTable" class="table table-striped table-bordered table-hover dataTable">
+                <thead>
+                <tr>
+                    <th colspan="3">Comment Log</th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Comment</th>
+                    <th>Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($vent_comments as $vent_comment)
+                <tr>
+                    <td>{{ $vent_comment->name }}</td>
+                    <td>{{ $vent_comment->comment }}</td>
+                    <td>{{ $vent_comment->created_at }}</td>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
     </div>
 </div>
-    </div>
 @stop
 @section('scripts')
 

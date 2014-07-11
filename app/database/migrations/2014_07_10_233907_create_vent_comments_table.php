@@ -15,7 +15,7 @@ class CreateVentCommentsTable extends Migration {
 		Schema::create('vent_comments', function($table){
             $table->increments('id');
             $table->string('name');
-            $table->string('comment');
+            $table->string('comment')->unique();
 
             $table->timestamps();
         });

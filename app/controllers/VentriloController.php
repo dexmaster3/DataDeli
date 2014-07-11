@@ -112,10 +112,14 @@ class VentriloController extends BaseController
         $channel_info_string = "";
         $this->channelDisplay($stat, $stat->m_name, 0, $channel_info_string);
 
+        //Comments Information
+        $vent_comments = VentComment::orderBy('created_at', 'DESC')->get();
+
         return View::make('static.ventrilostatus')
             ->with('basic', $basic_info)
             ->with('user', $user_info)
-            ->with('channel', $channel_info_string);
+            ->with('channel', $channel_info_string)
+            ->with('vent_comments', $vent_comments);
     }
 
     public function grabComments($key)
@@ -133,10 +137,8 @@ class VentriloController extends BaseController
 
             //User Information
             foreach ($stat->m_clientlist as $client) {
-                $previous_comment = VentComment::where('comment', '!=', $client->m_comm)->where('name', '=', $client->m_name);
-                echo var_dump($previous_comment->name);
-
-                if (!isset($previous_comment->comment)) {
+                $found_entry = VentComment::where('comment', '=', $client->m_comm)->get();
+                if ($client->m_comm != "" && $found_entry->isEmpty()) {
                     $comment = new VentComment;
                     $comment->name = $client->m_name;
                     $comment->comment = $client->m_comm;
