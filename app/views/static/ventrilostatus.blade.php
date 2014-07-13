@@ -81,7 +81,7 @@
                 <tr>
                     <td>{{ $vent_comment->name }}</td>
                     <td>{{ $vent_comment->comment }}</td>
-                    <td>{{ $vent_comment->created_at }}</td>
+                    <td>{{ $vent_comment->friendlyCreatedAt() }}</td>
                 </tr>
                 @endforeach
                 </tbody>

@@ -1,4 +1,3 @@
-<div class="footer-push"></div>
 <div class="footer">
     <div class="container">
         <p>&copy;DexCaff 2014</p>
