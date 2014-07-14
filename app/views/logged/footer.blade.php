@@ -35,14 +35,14 @@
 {{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js') }}
 <script>
     if (!window.jQuery.ui) {
-        document.write('<script src="/js/libs/jquery-2.0.2.min.js"><\/script>');
+        document.write('<script src="/js/jquery/jquery-2.0.2.min.js"><\/script>');
     }
 </script>
 
 {{ HTML::script('http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js') }}
 <script>
     if (!window.jQuery.ui) {
-        document.write('<script src="/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+        document.write('<script src="/js/jquery/jquery-ui-1.10.3.min.js"><\/script>');
     }
 </script>
 

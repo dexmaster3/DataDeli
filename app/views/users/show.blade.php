@@ -19,7 +19,7 @@
     <div class="col-sm-12">
         <div id="myCarousel" class="carousel fade profile-carousel">
             <div class="air air-top-left padding-10">
-                <h4 class="txt-color-white font-md">Joined {{ $user->friendlyCreatedAt() }}</h4>
+                <h4 class="font-md">Joined {{ $user->friendlyCreatedAt() }}</h4>
             </div>
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -29,15 +29,15 @@
             <div class="carousel-inner">
                 <!-- Slide 1 -->
                 <div class="item active">
-                    <img src="{{asset('img/demo/s1.jpg')}}" alt="">
+                    <img class="user-carousel-img" src="{{asset('img/userpages/food.png')}}" alt="">
                 </div>
                 <!-- Slide 2 -->
                 <div class="item">
-                    <img src="{{asset('img/demo/s2.jpg')}}" alt="">
+                    <img class="user-carousel-img" src="{{asset('img/userpages/retina_wood.png')}}" alt="">
                 </div>
                 <!-- Slide 3 -->
                 <div class="item">
-                    <img src="{{asset('img/demo/m3.jpg')}}" alt="">
+                    <img class="user-carousel-img" src="{{asset('img/userpages/congruent_pentagon.png')}}" alt="">
                 </div>
             </div>
         </div>

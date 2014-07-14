@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-@include('logged.head')
+    @include('logged.head')
+    @yield('head')
 </head>
 <body class="">
 @include('logged.header')

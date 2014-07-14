@@ -25,10 +25,14 @@ Route::get('ventupdate/{key}', 'VentriloController@grabComments');
 Route::group(array('before' => 'auth|activated|contact'), function ()
 {
     Route::group(array('prefix' => 'listing'), function(){
-
+        Route::get('{topic}', 'ListingController@search');
     });
-    //Route::resource('listing', 'ListingController');
-    Route::get('listing/{topic}', 'ListingController@search');
+    Route::get('files', 'FileController@index');
+    Route::group(array('prefix' => 'files'), function(){
+        Route::post('upload', 'FileController@upload');
+        Route::get('list', 'FileController@listing');
+    });
+
     Route::group(array('prefix' => 'users'), function () {
         Route::get('profile', 'UserController@profile');
         Route::get('list', 'UserController@listing');
