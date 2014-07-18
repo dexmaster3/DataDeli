@@ -31,7 +31,8 @@ Route::group(array('before' => 'auth|activated|contact'), function ()
     Route::group(array('prefix' => 'files'), function(){
         Route::post('upload', 'FileController@upload');
         Route::get('list', 'FileController@listing');
-        Route::get('test/{userId}/{fileId}', 'FileController@makeVisible');
+        Route::get('listvisibility/{fileId}', 'FileController@listVisibility');
+        Route::post('setvisibility', 'FileController@setVisibility');
     });
 
     Route::group(array('prefix' => 'users'), function () {

@@ -2,6 +2,7 @@
 
 @section('head')
 {{ HTML::style('/css/datatables/dataTables.bootstrap.css') }}
+{{ HTML::style('/css/multiselect/multi-select.css') }}
 @stop
 
 @section('content')
@@ -40,7 +41,7 @@
                         @foreach($files as $file)
                         <tr>
                             <td><a href="{{ $file->location }}">{{ $file->filename }}</a></td>
-                            <td><button id='{{ "set-visible-" . $file->id }}' class="btn-primary btn">Set</button></td>
+                            <td><button onclick='getFilePermissions({{ $file->id }})' id='{{ "set-visible-" . $file->id }}' class="btn-primary btn">Set</button></td>
                         </tr>
                         @endforeach
                         </tbody>
@@ -49,11 +50,31 @@
         </div>
     </div>
 </section>
+<div class="modal fade" id="file-permissions-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Set Permissions for <span id="file-title"></span></h4>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" id="modal-select" name="modal-select[]">
+
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="setFileButton" onclick="setFilePermissions()" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @stop
 
 @section('scripts')
 {{ HTML::script('js/datatables/jquery.dataTables.min.js') }}
 {{ HTML::script('js/datatables/dataTables.bootstrap.js') }}
+{{ HTML::script('js/multiselect/jquery.multi-select.js') }}
 <script>
     $(document).ready(function () {
         $('#userFileTable').dataTable({
@@ -61,5 +82,45 @@
             "bLengthChange": false
         });
     });
+
+    function getFilePermissions(id) {
+        $(".ms-container").remove();
+        $("#modal-select").remove();
+        $(".modal-body").append('<select multiple="multiple" id="modal-select" name="modal-select[]"></select>');
+        $.ajax({
+            type: "GET",
+            url: "/files/listvisibility/" + id
+        }).success(function(response){
+            $.each(response.users, function (index){
+                var selectedbool = $.inArray(response.users[index].id, response.visible) > -1;
+                var optionString = "<option value=" + response.users[index].id;
+                if (selectedbool) {
+                    optionString += " selected>"
+                } else {
+                    optionString += ">"
+                }
+                optionString += response.users[index].email + "</option>";
+                $("#modal-select").append(optionString);
+            });
+            $("#modal-select").multiSelect();
+            $("#setFileButton").attr('onclick', 'setFilePermissions(' + id + ')')
+            $("#file-permissions-modal").modal();
+        })
+    }
+
+    function setFilePermissions(file_id) {
+        var dataString = $("select#modal-select").val().map(function(item){
+            return parseInt(item, 10);
+        });
+        $.ajax({
+            type: "POST",
+            url: "/files/setvisibility",
+            data: JSON.stringify({data: dataString, fileId: file_id}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).success(function() {
+            $("#modal-select").modal('hide');
+        })
+    }
 </script>
 @stop

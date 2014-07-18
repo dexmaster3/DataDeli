@@ -23,21 +23,39 @@ class FileController extends BaseController
         return View::make('files.list')->with('files', $files)->with('users', $users);
     }
 
-    public function makeVisible($userId, $fileId)
+    public function listVisibility($fileId)
+    {
+        $visible = VisibleFile::where("file_id", "=", $fileId)->get();
+        $visible_users_ids = array();
+        foreach ($visible as $uservis) {
+            array_push($visible_users_ids, $uservis->user_id);
+        }
+
+        $users = User::all();
+
+        return Response::json(array("visible" => $visible_users_ids, "users" => $users->toArray()), 200);
+    }
+
+    public function setVisibility()
     {
         $current_user = Auth::user();
-        $file = UserFile::find($fileId);
-        if ($file->user_id == $current_user->id) {
-            $user = User::find($userId);
+        $data = Input::json("data");
+        $file_id = Input::json('fileId');
 
-            $visible = new VisibleFile;
-            $visible->user_id = $user->id;
-            $visible->file_id = $file->id;
-            $visible->save();
+        $file = UserFile::find($file_id);
+        if ($current_user->id == $file->user->id) {
+            $file_old_visibility = VisibleFile::where("file_id", "=", $file_id)->delete();
+
+            foreach ($data as $user_id) {
+                $visible_file = new VisibleFile;
+                $visible_file->user_id = $user_id;
+                $visible_file->file_id = $file_id;
+                $visible_file->save();
+            }
+
             return Response::json('success', 200);
-        } else {
-            return "not allowed";
         }
+        return Response::json('wrong user', 400);
     }
 
     public function upload()
