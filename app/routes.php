@@ -21,7 +21,6 @@ Route::post('contactinfo', 'HomeController@contactInfo');
 Route::get('ventrilo', 'VentriloController@ventrilo');
 Route::get('ventupdate/{key}', 'VentriloController@grabComments');
 
-
 Route::group(array('before' => 'auth|activated|contact'), function ()
 {
     Route::group(array('prefix' => 'listing'), function(){

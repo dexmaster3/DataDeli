@@ -34,6 +34,7 @@
                         <thead>
                         <tr role="row">
                             <th>FileName</th>
+                            <th>Publicly Viewable</th>
                             <th>Visibility</th>
                         </tr>
                         </thead>
@@ -41,6 +42,7 @@
                         @foreach($files as $file)
                         <tr>
                             <td><a href="{{ $file->location }}">{{ $file->filename }}</a></td>
+                            <td><label>Public<input type="checkbox" onchange="setpublic({{ $file->id }})"/></label></td>
                             <td><button onclick='getFilePermissions({{ $file->id }})' id='{{ "set-visible-" . $file->id }}' class="btn-primary btn">Set</button></td>
                         </tr>
                         @endforeach
@@ -119,7 +121,7 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).success(function() {
-            $("#modal-select").modal('hide');
+            $("#file-permissions-modal").modal('hide');
         })
     }
 </script>

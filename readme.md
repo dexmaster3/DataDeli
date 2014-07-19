@@ -8,7 +8,7 @@ This is my open source repository for my personal website, which will act as a t
 
 You can check my site out when it is live at [DexCaff.com](http://dexcaff.com/).
 
-### Build with PHPs Laravel Framework
+### Built with PHPs Laravel Framework
 
 Check out [laravel/framework](http://github.com/laravel/framework) github repository.
 

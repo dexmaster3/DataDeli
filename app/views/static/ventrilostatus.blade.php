@@ -82,7 +82,7 @@
                     <tr>
                         <td>{{ $vent_comment->name }}</td>
                         <td>{{ $vent_comment->comment }}</td>
-                        <td>{{ $vent_comment->friendlyCreatedAt() }}</td>
+                        <td>{{ $vent_comment->created_at }}</td>
                     </tr>
                     @endforeach
                     </tbody>
@@ -99,7 +99,7 @@
 <script>
     $(document).ready(function () {
         $('#userCommentsTable').dataTable({
-            "order": [[2, "asc"]],
+            "order": [[2, "desc"]],
             "bFilter": false,
             "bLengthChange": false
         });
