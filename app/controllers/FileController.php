@@ -58,6 +58,23 @@ class FileController extends BaseController
         return Response::json('wrong user', 400);
     }
 
+    public function setPublic()
+    {
+        $current_user = Auth::user();
+        $data = Input::json("data");
+        $file_id = Input::json('fileId');
+
+        $file = UserFile::find($file_id);
+        if ($current_user->id == $file->user->id) {
+
+            $file->public = $data;
+            $file->save();
+
+            return Response::json('success', 200);
+        }
+        return Response::json('wrong user', 400);
+    }
+
     public function upload()
     {
         $input = Input::all();

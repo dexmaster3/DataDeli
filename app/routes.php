@@ -32,6 +32,7 @@ Route::group(array('before' => 'auth|activated|contact'), function ()
         Route::get('list', 'FileController@listing');
         Route::get('listvisibility/{fileId}', 'FileController@listVisibility');
         Route::post('setvisibility', 'FileController@setVisibility');
+        Route::post('setpublic', 'FileController@setPublic');
     });
 
     Route::group(array('prefix' => 'users'), function () {

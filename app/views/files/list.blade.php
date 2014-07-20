@@ -42,7 +42,11 @@
                         @foreach($files as $file)
                         <tr>
                             <td><a href="{{ $file->location }}">{{ $file->filename }}</a></td>
-                            <td><label>Public<input type="checkbox" onchange="setpublic({{ $file->id }})"/></label></td>
+                            @if ($file->public)
+                            <td><div class="checkbox"><label><input checked type="checkbox" id="public-check-{{ $file->id }}" onchange="setPublic({{ $file->id }})"/> Public </label></div></td>
+                            @else
+                            <td><div class="checkbox"><label><input type="checkbox" id="public-check-{{ $file->id }}" onchange="setPublic({{ $file->id }})"/> Public </label></div></td>
+                            @endif
                             <td><button onclick='getFilePermissions({{ $file->id }})' id='{{ "set-visible-" . $file->id }}' class="btn-primary btn">Set</button></td>
                         </tr>
                         @endforeach
@@ -118,6 +122,20 @@
             type: "POST",
             url: "/files/setvisibility",
             data: JSON.stringify({data: dataString, fileId: file_id}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).success(function() {
+            $("#file-permissions-modal").modal('hide');
+        })
+    }
+
+    function setPublic(file_id)
+    {
+        var checked = $("#public-check-" + file_id).is(":checked");
+        $.ajax({
+            type: "POST",
+            url: "/files/setpublic",
+            data: JSON.stringify({data: checked, fileId: file_id}),
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).success(function() {
