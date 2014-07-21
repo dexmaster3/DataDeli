@@ -14,8 +14,8 @@ class VisibleFile extends Eloquent
         return $this->belongsTo('User');
     }
 
-    public function file()
+    public function userFile()
     {
-        return $this->hasOne('UserFile');
+        return $this->hasOne('UserFile', 'id', 'file_id');
     }
 }

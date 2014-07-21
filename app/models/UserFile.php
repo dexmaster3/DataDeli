@@ -14,4 +14,9 @@ class UserFile extends Eloquent
     {
         return $this->belongsTo('User');
     }
+
+    public function visible()
+    {
+        return $this->hasMany('VisibleFile', 'file_id', 'id');
+    }
 }

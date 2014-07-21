@@ -44,6 +44,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface
         return $this->hasMany('Offer');
     }
 
+    public function visibleFiles()
+    {
+        return $this->hasMany('VisibleFile');
+    }
+
     public function postings()
     {
         return $this->hasMany('UserPost', 'user_id', 'id')->orderBy('created_at', 'ASC');

@@ -18,9 +18,22 @@ class FileController extends BaseController
         $user = Auth::user();
 
         $files = UserFile::where('user_id', '=', $user->id)->get();
+        $visible_files = array();
+        $visible_file_ids = array();
+        foreach ($user->visibleFiles as $vfile)
+        {
+            array_push($visible_files, $vfile->userFile);
+            array_push($visible_file_ids, $vfile->file_id);
+        }
+        $public_files = UserFile::whereNotIn('id', $visible_file_ids)->where('public', '=', true)->get();
+        foreach ($public_files as $file)
+        {
+            array_push($visible_files, $file);
+        }
+
         $users = User::all();
 
-        return View::make('files.list')->with('files', $files)->with('users', $users);
+        return View::make('files.list')->with('files', $files)->with('users', $users)->with('visible_files', $visible_files);
     }
 
     public function listVisibility($fileId)

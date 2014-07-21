@@ -52,6 +52,20 @@
                         @endforeach
                         </tbody>
                     </table>
+                <table id="sharedFileTable" class="table table-striped table-bordered table-hover dataTable">
+                    <thead>
+                    <tr role="row">
+                        <th>Shared Files</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($visible_files as $vfile)
+                    <tr>
+                        <td><a href="{{ $vfile->location }}">{{ $vfile->filename }}</a></td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
