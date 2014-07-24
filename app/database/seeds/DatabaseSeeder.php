@@ -97,49 +97,49 @@ class UserTableSeeder extends Seeder {
         $users = array(
             array(
                 'email' => "dexter@webforwardmedia.com",
-                "password" => Hash::make("codename1"),
+                "password" => Hash::make("password"),
                 "role" => 1,
                 "activated" => true,
                 'parent_id' => 0),
             array(
                 'email' => 'chipdip@yahoo.com',
-                'password' => Hash::make('codename1'),
+                'password' => Hash::make('password'),
                 'role' => 1,
                 'parent_id' => 1),
             array(
                 'email' => 'drjimes@yahoo.com',
-                'password' => Hash::make('codename1'),
+                'password' => Hash::make('password'),
                 'role' => 4,
                 'parent_id' => 1),
             array(
                 'email' => 'hdonna@gmail.com',
-                'password' => Hash::make('codename1'),
+                'password' => Hash::make('password'),
                 'role' => 3,
                 'parent_id' => 3),
             array(
                 'email' => 'willgrello@gmail.com',
-                'password' => Hash::make('codename1'),
+                'password' => Hash::make('password'),
                 'role' => 3,
                 'parent_id' => 2),
             array(
                 'email' => 'grum@gmail.com',
-                'password' => Hash::make('codename1'),
+                'password' => Hash::make('password'),
                 'role' => 3,
                 'parent_id' => 4),
             array(
                 'email' => 'smchanahan@gmail.com',
-                'password' => Hash::make('codename1'),
+                'password' => Hash::make('password'),
                 'role' => 3,
                 'parent_id' => 4),
             array(
                 'email' => 'jeff_caffery2@yahoo.com',
-                'password' => Hash::make('green125'),
+                'password' => Hash::make('password'),
                 'role' => 3,
                 'activated' => true,
                 'parent_id' => 4),
             array(
                 'email' => 'mollycaffery10@gmail.com',
-                'password' => Hash::make('dogdigger36'),
+                'password' => Hash::make('password'),
                 'role' => 3,
                 'activated' => true,
                 'parent_id' => 1

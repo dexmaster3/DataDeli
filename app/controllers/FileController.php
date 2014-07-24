@@ -122,4 +122,21 @@ class FileController extends BaseController
             return Response::json('error', 400);
         }
     }
+
+    public function download($file_folder, $file_name, $file_id)
+    {
+        $db_file_entry = UserFile::find($file_id);
+
+        header("Content-Type: application/octet-stream");
+        $full_location = public_path() ."/uploads/$file_folder/$file_name";
+        header("Content-Disposition: attachment; filename=" . urlencode($db_file_entry->filename));
+        header("Content-Type: application/octet-stream");
+        header("Content-Type: application/download");
+        header("Content-Description: File Transfer");
+        header("Content-Length: " . filesize($full_location));
+        ob_clean();
+        flush();
+        readfile($full_location);
+        return $full_location;
+    }
 }

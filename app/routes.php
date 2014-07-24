@@ -23,12 +23,10 @@ Route::get('ventupdate/{key}', 'VentriloController@grabComments');
 
 Route::group(array('before' => 'auth|activated|contact'), function ()
 {
-    Route::group(array('prefix' => 'listing'), function(){
-        Route::get('{topic}', 'ListingController@search');
-    });
     Route::get('files', 'FileController@index');
     Route::group(array('prefix' => 'files'), function(){
         Route::post('upload', 'FileController@upload');
+        Route::get('download/uploads/{file_folder}/{file_name}/{file_id}', 'FileController@download');
         Route::get('list', 'FileController@listing');
         Route::get('listvisibility/{fileId}', 'FileController@listVisibility');
         Route::post('setvisibility', 'FileController@setVisibility');

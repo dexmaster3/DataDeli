@@ -56,12 +56,14 @@
                     <thead>
                     <tr role="row">
                         <th>Shared Files</th>
+                        <th>Owner</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($visible_files as $vfile)
                     <tr>
-                        <td><a href="{{ $vfile->location }}">{{ $vfile->filename }}</a></td>
+                        <td><a href="/files/download{{ $vfile->location }}/{{ $vfile->id }}">{{ $vfile->filename }}</a></td>
+                        <td><a href="/users/{{ $vfile->user->id }}">{{ $vfile->user->contact->fullName() }}</a></td>
                     </tr>
                     @endforeach
                     </tbody>
