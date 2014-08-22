@@ -22,10 +22,12 @@ class FileController extends BaseController
         $visible_file_ids = array();
         foreach ($user->visibleFiles as $vfile)
         {
-            array_push($visible_files, $vfile->userFile);
-            array_push($visible_file_ids, $vfile->file_id);
+                array_push($visible_files, $vfile->userFile);
+                array_push($visible_file_ids, $vfile->file_id);
         }
-        $public_files = UserFile::whereNotIn('id', $visible_file_ids)->where('public', '=', true)->get();
+        $public_files = UserFile::whereNotIn('id', $visible_file_ids)
+            ->where('public', '=', true)
+            ->where('user_id', '!=', $user->id)->get();
         foreach ($public_files as $file)
         {
             array_push($visible_files, $file);
@@ -38,6 +40,7 @@ class FileController extends BaseController
 
     public function listVisibility($fileId)
     {
+        $current_user = Auth::user();
         $visible = VisibleFile::where("file_id", "=", $fileId)->get();
         $visible_users_ids = array();
         foreach ($visible as $uservis) {

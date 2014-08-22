@@ -11,8 +11,9 @@
 <div class="navbumper animated fadeInDown">
     <div class="container" style="margin-top: 50px;margin-bottom: 50px;">
         <div class="row-fluid section">
-            <div class="col-lg-5">
-                <table id="basicInfoTable" class="table table-striped table-bordered table-hover dataTable">
+            <div class="col-lg-5 well">
+                <h1>Server Information</h1>
+                <table id="basicInfoTable" class="table table-hover dataTable">
                     <thead>
                     <tr>
                         <th>Item</th>
@@ -28,19 +29,21 @@
                     @endforeach
                     </tbody>
                 </table>
-
             </div>
             <div class="col-lg-offset-1 col-lg-6 well">
+                <h1>Server Layout</h1>
                 {{ $channel }}
-                <a style="margin-top: 1em;" class="btn btn-primary"
+                <p><a style="margin-top: 1em;" class="btn btn-primary"
                    href="ventrilo://dexcaff.com:3784/servername=DexHouse">Click here to launch
-                    Ventrilo and connect!</a>
+                    Ventrilo and connect!</a></p>
+                <p>For a password just <a href="/contact">contact me</a> we would love for you to join us in ventrilo!</p>
             </div>
         </div>
 
         <div class="row-fluid section">
-            <div class="col-lg-12">
-                <table id="userInfoTable" class="table table-striped table-bordered table-hover dataTable">
+            <div class="col-lg-12 well">
+                <h1>Current Users</h1>
+                <table id="userInfoTable" class="table table-hover dataTable">
                     <thead>
                     <tr>
                         @if(isset($user[0]))
@@ -68,8 +71,9 @@
             </div>
         </div>
         <div class="row-fluid section">
-            <div class="col-lg-12">
-                <table id="userCommentsTable" class="table table-striped table-bordered table-hover dataTable">
+            <div class="col-lg-12 well">
+                <h1>Comment Archive</h1>
+                <table id="userCommentsTable" class="table table-hover dataTable">
                     <thead>
                     <tr>
                         <th>Name</th>

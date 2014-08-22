@@ -14,8 +14,8 @@
     {{ HTML::style('css/font-awesome.min.css'); }}
 
     <!-- SmartAdmin Styles : Please note some use LESS variables -->
-    {{ HTML::style('css/smartadmin-production.css') }}
-    {{ HTML::style('css/smartadmin-skins.css') }}
+<!--    {{ HTML::style('css/smartadmin-production.css') }}-->
+<!--    {{ HTML::style('css/smartadmin-skins.css') }}-->
 
     <!-- FAVICONS -->
     <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">

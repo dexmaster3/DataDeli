@@ -9,6 +9,9 @@ Route::get('/work', function () {
 Route::get('/contact', function () {
     return View::make('static.contact');
 });
+Route::get('/about', function () {
+    return View::make('static.about');
+});
 
 Route::get('login', array('uses' => 'LoginController@showLogin'));
 Route::post('login', array('uses' => 'LoginController@doLogin'));

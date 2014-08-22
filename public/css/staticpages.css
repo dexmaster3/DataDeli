@@ -3,15 +3,47 @@ h1, h2, h3, h4, h5, h6 {
 }
 html, body {
     height:100%;
+    background-color: #e6e6e6;
+}
+
+.navbar {
     background-color: #FFFFFF;
+    border: none;
+}
+.navbar .navbar-nav li a {
+    color:#000000;
+}
+.navbar-header .navbar-brand {
+    color:#000000;
+}
+.navbar .navbar-nav li a:hover {
+    color:#4E8541;
+}
+.navbar .navbar-nav li a.active {
+    color:#4E8541;
+    border-bottom: 3px solid #7DD467;
+}
+.navbar-brand.active {
+    color:#4E8541;
+    border-bottom: 3px solid #7DD467;
+}
+.navbar-header .navbar-brand:hover {
+    color:#4E8541;
 }
 .navbumper {
     margin-top: 50px;
 }
 
+table .table-bordered .dataTable {
+    border: 1px solid #868686;
+}
 .footer {
     background-color: #FFFFFF;
     box-shadow: 0px 500px 0px 500px #FFFFFF;
     padding: 2em;
-    margin-top: 1em;
+    margin-top: 3em;
+}
+
+.nav.navbar-nav li {
+    margin: 0 1em;
 }
