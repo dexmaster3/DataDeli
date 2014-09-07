@@ -15,8 +15,8 @@
             <ul class="nav navbar-nav">
                 <li><a class="{{Request::path() == 'about' ? 'active' : '';}}" href="{{ URL::to('/about') }}"><i class="glyphicon glyphicon-user white"></i> About Me</a>
                 </li>
-<!--                <li><a class="{{Request::path() == 'work' ? 'active' : '';}}" href="{{ URL::to('/work') }}"><i class="glyphicon glyphicon-list-alt"></i> My Work</a>-->
-<!--                </li>-->
+                <li><a class="{{Request::path() == 'work' ? 'active' : '';}}" href="{{ URL::to('/work') }}"><i class="glyphicon glyphicon-list-alt"></i> My Work</a>
+                </li>
                 <li><a class="{{Request::path() == 'contact' ? 'active' : '';}}" href="{{ URL::to('/contact') }}"><i class="glyphicon glyphicon-envelope"></i> Contact</a>
                 </li>
                 <li><a class="{{Request::path() == 'ventrilo' ? 'active' : '';}}" href="{{ URL::to('/ventrilo') }}"><i class="glyphicon glyphicon-volume-up"></i> Ventrilo</a>

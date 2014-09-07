@@ -4,7 +4,7 @@
     <div class="row-fluid section">
         <div class="col-lg-12">
             <h1>My Work</h1>
-            <p>You can check out some of my work here. Also be sure to register for my logged section of the site.</p>
+            <p>Be sure to take a gander at my <a href="https://github.com/dexmaster3">GitHub page.</a></p>
         </div>
     </div>
 </div>

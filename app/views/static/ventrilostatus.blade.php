@@ -78,6 +78,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Comment</th>
+                        <th class="hidden">Hidden Time</th>
                         <th>Time</th>
                     </tr>
                     </thead>
@@ -86,7 +87,8 @@
                     <tr>
                         <td>{{ $vent_comment->name }}</td>
                         <td>{{ $vent_comment->comment }}</td>
-                        <td>{{ $vent_comment->created_at }}</td>
+                        <td class="hidden">{{ $vent_comment->created_at }}</td>
+                        <td><time datetime="{{ $vent_comment->created_at }}">{{ $vent_comment->friendlyCreatedAt() }}</time></td>
                     </tr>
                     @endforeach
                     </tbody>
