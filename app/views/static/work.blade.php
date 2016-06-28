@@ -4,7 +4,7 @@
     <div class="row-fluid section">
         <div class="col-lg-12">
             <h1>My Work</h1>
-            <p>Be sure to take a gander at my <a href="https://github.com/dexmaster3">GitHub page.</a></p>
+            <p>Be sure to take a gander at my <a href="https://github.com/dexmaster3" target="_blank">GitHub page.</a></p>
         </div>
     </div>
 </div>
@@ -12,11 +12,5 @@
 @stop
 
 @section('scripts')
-<!-- Script to Activate the Carousel -->
-<script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-</script>
 
 @stop

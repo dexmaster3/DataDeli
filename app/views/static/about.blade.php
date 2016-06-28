@@ -21,21 +21,30 @@
                 interact with, and communicate various problems to the technologically impaired.</p>
             <h4>Webforward Media –  Mt Pleasant, SC</h4>
             <h4>Developer</h4>
-            <p><strong>December 2013 – Present</strong></p>
+            <p><strong>December 2013 – September 2014</strong></p>
             <p>Answered client support tickets for our software products.</p>
             <p>Worked on ASP.NET MVC web projects which included the use of Entity Framework, and domain-driven design.</p>
             <p>Worked on various projects as the sole developer using plain PHP and the Laravel framework.</p>
             <p>Created many Wordpress websites for a range of clients.</p>
             <p>Strong experience using JavaScript, jQuery and HTML/CSS to create fluid front-end experiences for users.</p>
-            <h1>Professional Skills</h1>
-            <p>Experienced in Adobe's Creative Suite</p>
+            <h4>Blue Acorn - Charleston, SC</h4>
+            <h4>Magento Developer</h4>
+            <p><strong>October 2014 - Present</strong></p>
+            <p>Use my own creativity to decide how to create logical solutions.</p>
+            <p>Pioneer new technologies and introduce new tools to my team.</p>
+            <p>LAMP Web development using Object Oriented PHP with Zend best practices, primarily on the Magento Platform and yes, some javascript.</p>
+            <p>Manage our client’s repositories using Git including feature branching, deploying, merging, etc.</p>
+            <p> Developing Custom Extensions to be released as third party add-ons.</p>
+            <p>Work closely with my manager to develop my IDP - Individual Development Plan to ensure my continued growth and development as a programmer.</p>
+            <p>I am part of a successful collaborative supportive agile team.</p>
+            <h1>Pro Skills</h1>
+            <p>Experienced enough in Adobe's Creative Suite</p>
             <p>Word processing at 90+ words per minute</p>
-            <h1>Technological Skills</h1>
-            <p>ASP.NET in C#, JavaScript, PHP, Python 2.7+/3.2+, Ruby on Rails, HTML 5, CSS</p>
+            <h1>Tech Skills</h1>
+            <p>ASP.NET in C#, JavaScript, Magento, PHP, Python 2.7+/3.2+, Ruby on Rails, HTML/CSS</p>
             <p>MySQL, MS SQL Server 2012</p>
             <p>Team Foundation Server, Git</p>
-            <p>MS Visual Studio 2013, PhpStorm, Sublime Text 2</p>
-            <p>Windows 7/8.1/Server 2008 R2/Server 2012, Linux (Ubuntu/Debian)</p>
+            <p>Windows Server 2008 R2/Server 2012, Linux (Ubuntu/Debian)</p>
         </div>
     </div>
 </div>

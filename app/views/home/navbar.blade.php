@@ -19,7 +19,7 @@
                 </li>
                 <li><a class="{{Request::path() == 'contact' ? 'active' : '';}}" href="{{ URL::to('/contact') }}"><i class="glyphicon glyphicon-envelope"></i> Contact</a>
                 </li>
-                <li><a class="{{Request::path() == 'ventrilo' ? 'active' : '';}}" href="{{ URL::to('/ventrilo') }}"><i class="glyphicon glyphicon-volume-up"></i> Ventrilo</a>
+                <li><a class="{{Request::path() == 'mumble' ? 'active' : '';}}" href="{{ URL::to('/mumble') }}"><i class="glyphicon glyphicon-volume-up"></i> Ventrilo</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
