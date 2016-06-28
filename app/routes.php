@@ -13,6 +13,7 @@ Route::get('/about', function () {
     return View::make('static.about');
 });
 
+Route::get('mumble', 'MumbleController@index');
 Route::get('login', array('uses' => 'LoginController@showLogin'));
 Route::post('login', array('uses' => 'LoginController@doLogin'));
 Route::get('logout', array('uses' => "LoginController@doLogout"));
