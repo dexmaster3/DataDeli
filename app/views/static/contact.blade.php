@@ -7,7 +7,7 @@
             <h1>Channels of Communication</h1>
             <p>Feel free to contact me using any of the following methods</p><br/>
             <h5>Email: dex@dexcaff.com</a></h5>
-            <h5>Telephone: <img src="{{ HTML::image('img/phone.png') }}"/></h5>
+            <h5>Telephone: {{ HTML::image('img/phone.png') }}</h5>
             <h5>Postcard: 40 Percy Street, Charleston, SC 29403</h5>
             <h5>Fax Machine: 1-823-352-7647</h5>
             <h5>CB Radio: Channel 38 - 27.385 MHz (Unofficial SSB calling channel, LSB mode)</h5>

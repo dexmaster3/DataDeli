@@ -6,9 +6,9 @@
  * Date: 7/4/14
  * Time: 6:50 PM
  */
-class VentriloController extends BaseController
+class MumbleController extends BaseController
 {
-    public function ventrilo()
+    public function index()
     {
         return View::make('static.mumblestatus');
     }

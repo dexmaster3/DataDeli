@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="container">
-        <p>&copy;DexCaff 2014</p>
+        <p>&copy;DexCaff 2016</p>
     </div>
 </div>
 

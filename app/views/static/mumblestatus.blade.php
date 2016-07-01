@@ -26,7 +26,6 @@
             </div>
             <div class="col-lg-offset-1 col-lg-6 well">
                 <h1>Server Layout</h1>
-                {{ $channel }}
                 <p><a style="margin-top: 1em;" class="btn btn-primary"
                    href="ventrilo://dexcaff.com:3784/servername=DexHouse">Click here to launch
                     Ventrilo and connect!</a></p>
