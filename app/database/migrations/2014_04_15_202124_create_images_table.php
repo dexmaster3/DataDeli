@@ -18,8 +18,8 @@ class CreateImagesTable extends Migration {
             $table->increments('id');
 
             $table->string('imageUrl');
-            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
-            $table->integer('offer_id')->unsigned();
+            //$table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
+            //$table->integer('offer_id')->unsigned();
 
 
             $table->timestamps();
